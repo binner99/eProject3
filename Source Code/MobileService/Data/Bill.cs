@@ -4,7 +4,7 @@
 namespace Data
 {
     
-    class Bill
+  public  class Bill
     {
         
         [Key]

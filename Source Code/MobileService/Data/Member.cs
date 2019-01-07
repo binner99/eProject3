@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Data
 {
     
-    class Member
+   public class Member
     {
         
         [Key]

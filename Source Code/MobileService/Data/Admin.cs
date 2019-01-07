@@ -1,14 +1,13 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Data
 {
     
-    class Admin
-    {
-        
+  public  class Admin
+    {        
         [Key]
         [Display(Name = "User name")]
+        [Required]
         [StringLength(50, MinimumLength = 3)]
         public string adName { get; set; }
 
@@ -24,7 +23,7 @@ namespace Data
         [Display(Name = "Role")]
         public bool adRole { get; set; }
 
-        
+        [Display(Name = "Image")]
         [DataType(DataType.Upload)]
         public string adImage { get; set; }
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Data
 {
     
-    class Feedback
+   public class Feedback
     {
         
         [Key]

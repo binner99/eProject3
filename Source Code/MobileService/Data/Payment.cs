@@ -4,7 +4,7 @@
 namespace Data
 {
     
-    class Payment
+    public class Payment
     {
         
         [Key]
