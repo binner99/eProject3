@@ -12,6 +12,7 @@
 <table class="table">
     <tr>
         <th>
+            
             @Html.DisplayNameFor(model => model.adImage)
         </th>
         <th>
@@ -47,7 +48,6 @@
                 @Html.DisplayFor(modelItem => item.adRole)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { adName = item.adName }) |
                 @Html.ActionLink("Details", "Details", new { adName = item.adName }) |
                 @Html.ActionLink("Delete", "Delete", new { adName = item.adName })
             </td>

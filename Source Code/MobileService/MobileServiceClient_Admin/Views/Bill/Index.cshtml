@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Data.Bill>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.billPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.billCusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.billDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.billDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.billTotal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.billPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billCusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billDes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.billID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.billID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.billID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,74 @@
+﻿@model Data.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic,latin-ext" rel="stylesheet">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Sign in to Web Master </h1>
+    <div class="w3ls-login box box--big">
+        <!-- form starts here -->
+        @using (Html.BeginForm())
+        {
+            <div class="agile-field-txt">
+                <label> Username</label>
+                @Html.EditorFor(model => model.adName, new { htmlAttributes = new { @placeholder = "Username"} })
+                @Html.ValidationMessageFor(model => model.adName, "", new { @style = "color:white;" })
+            </div>
+            <div class="agile-field-txt">
+                <label> password</label>
+                @Html.EditorFor(model => model.adPass, new { htmlAttributes = new { @placeholder = "Password", @type = "password", @id = "myInput" } })
+                @Html.ValidationMessageFor(model => model.adPass, "", new { @style = "color:white;" })
+                @*<div class="agile_label">
+                        <input id="check3" name="check3" type="checkbox" value="show password" onclick="myFunction()">
+                        <label class="check" for="check3">Show password</label>
+                    </div>
+                    <div class="agile-right">
+                        <a href="#">forgot password?</a>
+                    </div>*@
+            </div>
+            <div class="w3ls-bot">
+                <div class="switch-agileits">
+                    <label class="switch">
+                        <input type="checkbox" onclick="myFunction()">
+                        <span class="slider round"></span>
+                        Show password
+                    </label>
+                </div>
+            </div>
+            <!-- script for show password -->
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("myInput");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
+            <!-- //end script -->
+
+            <input type="submit" value="SIGN IN">
+        }
+    </div>
+    <!-- //form ends here -->
+    <!--copyright-->
+    <div class="copy-wthree">
+        <p>
+            © 2018 KMobile Web Master | Design by
+            <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+        </p>
+    </div>
+    <!--//copyright-->
+</body>
+</html>

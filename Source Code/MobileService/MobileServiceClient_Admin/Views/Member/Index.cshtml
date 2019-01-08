@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Data.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.memPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memPass)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.memPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memPass)
+        </td>
+        <td>
+            @Html.ActionLink(" Details", "Details", new { id = item.memPhone }, new { @class = "btn btn-sm btn-info fa fa-info" }) 
+        </td>
+    </tr>
+}
+
+</table>
