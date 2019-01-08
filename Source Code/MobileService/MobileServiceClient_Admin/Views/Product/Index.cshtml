@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Data.Product>
+
+@{
+    ViewBag.Title = "Product";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pDes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -8,18 +8,47 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/JSCustom")
 </head>
 <body>
     @Html.Partial("_Header")
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!-- Right Panel -->
 
-    @Scripts.Render("~/bundles/Ajax")
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+                <div>
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hi, Admin
+                            <img class="user-avatar rounded-circle" src="../../img/" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="./admin.php"><i class="fa fa-address-card"></i> My Profile</a>
+                            <a class="nav-link" href="./adminlog.php"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <div class="breadcrumbs">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1><i class="menu-icon fa fa-address-card"></i>@ViewBag.Title</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="content mt-3">
+            @RenderBody()
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+    @Scripts.Render("~/bundles/AjaxCustom")
     @RenderSection("scripts", required: false)
 </body>
 </html>

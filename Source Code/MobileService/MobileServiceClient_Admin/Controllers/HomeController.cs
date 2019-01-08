@@ -47,30 +47,12 @@ namespace MobileServiceClient_Admin.Controllers
             }
         }
 
-        //Edit
-        public ActionResult Edit(string adName) => View(client.GetAsync(url + adName).Result.Content.ReadAsAsync<Admin>().Result);
-        [HttpPost]
-        public ActionResult Edit(string adName, Admin admin)
-        {
-            try
-            {
-                var status = client.PutAsJsonAsync<Admin>(url + adName, admin).Result;
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         //Delete
         public ActionResult Delete(string adName)
         {
             try
             {
                 var status = client.DeleteAsync(url + adName).Result;
-
                 return RedirectToAction("Index");
             }
             catch

@@ -76,7 +76,6 @@ namespace RemoteAPI.Controllers
             {
                 return NotFound();
             }
-
             db.Admins.Remove(admin);
             await db.SaveChangesAsync();
 
