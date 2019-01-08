@@ -22,11 +22,15 @@ namespace MobileServiceClient_Admin
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/Ajax").Include(
-                      "~/Scripts/AjaxJquery.js"));
+            bundles.Add(new ScriptBundle("~/bundles/JSCustom").Include(
+                "~/Scripts/JS_Custom/AjaxJquery.js"                 
+                      ));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/style_admin.css",
                       "~/Content/site.css"));
         }
     }

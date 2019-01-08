@@ -1,15 +1,43 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿<!-- Left Panel -->
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
 
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-            </ul>
-            @*@Html.Partial("_LoginPartial")*@
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/img/Logo/Kmobilead.png" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="@Url.Action("Index","Admin")"><img src="~/img/Logo/Kmobilead.png" class="rounded-circle" alt="Logo"></a>
         </div>
-    </div>
-</nav>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="menu-item active">
+                    <a href="@Url.Action("Index","Home")">
+                        <i class="menu-icon fa fa-address-card"></i> Admin Manager
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Product")"> <i class="menu-icon fa fa-product-hunt"></i>Products</a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Service")"> <i class="menu-icon fa fa-product-hunt"></i>Services</a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Member")"> <i class="menu-icon fa fa-users"></i>Members</a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Bill")"> <i class="menu-icon fa fa-money"></i>Bill</a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Feedback")"> <i class="menu-icon fa fa-comments"></i>Feedback</a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("Index","Address")"> <i class="menu-icon fa fa-newspaper-o"></i>Address</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+<!-- Left Panel -->
+
