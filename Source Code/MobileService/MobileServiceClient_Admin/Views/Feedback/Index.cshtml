@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Data.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fbCusname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fbObject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fbContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fbStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fbCusname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.memPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.memEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fbObject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fbContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fbStatus)
+            </td>
+            <td>
+                @Html.ActionLink(" Reply", "Reply", new { id = item.fbID }, new { @class = "btn btn-sm btn-primary fa fa-reply" })
+                @Html.ActionLink(" Details", "Details", new { id = item.fbID }, new { @class = "btn btn-sm btn-info fa fa-info" })
+            </td>
+        </tr>
+    }
+
+</table>

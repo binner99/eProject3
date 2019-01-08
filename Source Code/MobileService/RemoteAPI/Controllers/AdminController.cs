@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Security;
 using Data;
 using RemoteAPI.Models;
 
@@ -26,31 +20,46 @@ namespace RemoteAPI.Controllers
 
         // GET: api/Admin/5
         [ResponseType(typeof(Admin))]
-        public async Task<IHttpActionResult> GetAdmin(string id)
+        public IHttpActionResult GetAdmin(string id)
         {
-            Admin admin = await db.Admins.FindAsync(id);
+            Admin admin = db.Admins.Find(id);
             if (admin == null)
             {
                 return NotFound();
             }
-
             return Ok(admin);
         }
-        
+
+        [Route("check/Admin")]
+        [HttpPost]
+        public IHttpActionResult Login(Admin admin)
+        {            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var adCheck = db.Admins.First(x => x.adName == admin.adName && x.adPass == admin.adPass);
+            if (adCheck == null)
+            {
+                return NotFound();
+            }            
+            return Ok();
+        }
+
         // POST: api/Admin
         [ResponseType(typeof(Admin))]
-        public async Task<IHttpActionResult> PostAdmin(Admin admin)
+        public IHttpActionResult PostAdmin(Admin admin)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            admin.adRole = false;
+
             db.Admins.Add(admin);
 
             try
             {
-                await db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -69,15 +78,16 @@ namespace RemoteAPI.Controllers
 
         // DELETE: api/Admin/5
         [ResponseType(typeof(Admin))]
-        public async Task<IHttpActionResult> DeleteAdmin(string id)
+        public IHttpActionResult DeleteAdmin(string id)
         {
-            Admin admin = await db.Admins.FindAsync(id);
+            Admin admin = db.Admins.Find(id);
             if (admin == null)
             {
                 return NotFound();
             }
+
             db.Admins.Remove(admin);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
             return Ok(admin);
         }

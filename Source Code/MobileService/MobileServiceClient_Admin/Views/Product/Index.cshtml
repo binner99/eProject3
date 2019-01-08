@@ -20,7 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.pPrice)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -38,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.pPrice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pID })
+            @Html.ActionLink(" Edit", "Edit", new { id=item.pID }, new { @class = "btn btn-sm btn-primary fa fa-edit" }) 
+            @Html.ActionLink(" Details", "Details", new { id=item.pID }, new { @class = "btn btn-sm btn-info fa fa-info" })
+            @Html.ActionLink(" Delete", "Delete", new { id=item.pID }, new { @class = "btn btn-sm btn-danger fa fa-remove" })
         </td>
     </tr>
 }
