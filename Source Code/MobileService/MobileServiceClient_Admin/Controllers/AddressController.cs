@@ -1,6 +1,7 @@
 ﻿using Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -17,6 +18,21 @@ namespace MobileServiceClient_Admin.Controllers
 
         //Details
         public ActionResult Details(int id) => View(client.GetAsync(url + id).Result.Content.ReadAsAsync<Address>().Result);
+
+        //Upload
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            var file = Request.Files[0];
+            var fileName = Path.GetFileName(file.FileName);
+            var path = Path.Combine(Server.MapPath("~/img/Address"), fileName);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            file.SaveAs(path);
+            return Json(new { UploadedFilename = Request.Files[0].FileName });
+        }
 
         //Create
         public ActionResult Create() => View();

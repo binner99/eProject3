@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<Data.Bill>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Bill";
 }
 
-<h2>Index</h2>
 <table class="table">
     <tr>
         <th>
@@ -22,7 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.billTotal)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
 
     @foreach (var item in Model)
@@ -44,9 +43,8 @@
                 @Html.DisplayFor(modelItem => item.billTotal)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.billID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.billID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.billID })
+
+                @Html.ActionLink(" Details", "Details", new { id = item.billID }, new { @class = "btn btn-sm btn-info fa fa-info" })
             </td>
         </tr>
     }
