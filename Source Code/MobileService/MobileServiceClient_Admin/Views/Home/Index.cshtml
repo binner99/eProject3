@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<Data.Admin>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Admin";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(" Add New", "Create",null,new { @class= "btn btn-link fa fa-plus" })
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -45,11 +44,12 @@
                 @string.Format("{0}{1}******", item.adPass[0], item.adPass[1])
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.adRole)
+                @role
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { adName = item.adName }) |
-                @Html.ActionLink("Delete", "Delete", new { adName = item.adName })
+                @Html.ActionLink(" Details", "Details", new { adName = item.adName }, new { @class = "btn btn-sm btn-info fa fa-info" })
+                @Html.ActionLink(" Delete", "Delete", new { adName = item.adName }, new { @class = "btn btn-sm btn-danger fa fa-remove" })
+
             </td>
         </tr>
     }

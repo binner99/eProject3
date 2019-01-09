@@ -1,64 +1,85 @@
 ﻿@model Data.Address
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = " Add New Info Company";
 }
 
-<h2>Create</h2>
-
+<p>
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark fa fa-arrow-left" })
+</p>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Address</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.compName, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
-                @Html.EditorFor(model => model.compName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.compName, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        <div class="border ml-3 mb-2" style="width:200px;height:200px;" id="imgFile">
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.compAdress, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
-                @Html.EditorFor(model => model.compAdress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.compAdress, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
-                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div>
+            @Html.EditorFor(model => model.image, new { htmlAttributes = new { @type = "file", @class = "form-control-file", @id = "ImageAddress", @accept = "image/*" } })
+            @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="form-group">
+        @Html.LabelFor(model => model.compName, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        <div>
+            @Html.EditorFor(model => model.compName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.compName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.compAdress, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        <div>
+            @Html.EditorFor(model => model.compAdress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.compAdress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label font-weight-bold" })
+        <div>
+            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
 </div>
-
+}
+<script>
+    //Address---------------
+    $("#ImageAddress").change(function () {
+        var formData = new FormData();
+        var file = document.getElementById("ImageAddress").files[0];
+        formData.append("ImageAddress", file);
+        $.ajax({
+            type: "POST",
+            url: "/Address/Upload",
+            data: formData,
+            dataType: "json",
+            contentType: false,
+            processData: false,
+            success: function (data, status) {
+                alert("Add " + status + " " + data.UploadedFilename);
+                $("#imgFile").html("<img src='/img/Address/" + data.UploadedFilename + "'style='width: 200px; height: 200px;'>");
+            },
+            error: function (error, xhr, status, statusTxt) {
+                alert(error + ": " + statusTxt + "\n" + status + "\n" + xhr.status);
+            }
+        });
+    });
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,16 +1,17 @@
 ﻿@model Data.Address
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = " Edit Info Company At " + Model.compAdress;
 }
 
-<h2>Edit</h2>
-
+<p>
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark fa fa-arrow-left" })
+</p>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Address</h4>
         <hr />
@@ -19,7 +20,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.compName, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
+            <div>
                 @Html.EditorFor(model => model.compName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.compName, "", new { @class = "text-danger" })
             </div>
@@ -27,7 +28,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.compAdress, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
+            <div>
                 @Html.EditorFor(model => model.compAdress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.compAdress, "", new { @class = "text-danger" })
             </div>
@@ -35,7 +36,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
+            <div>
                 @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
@@ -43,7 +44,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
+            <div>
                 @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
             </div>
@@ -51,15 +52,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
