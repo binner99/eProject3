@@ -1,14 +1,35 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/StyleSheet.css" />
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height : 110px">
+    <div class="container mb-2">
+        <a href="#home"><img src="~/Logo/KMpng.png" height="94" width="259" /></a>
+
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+    
+                <li class="nav-item">@Html.ActionLink("Online Recharge", "Payment", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Post Bill Payment", "PostPaid", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact Us", "ContactUs", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("My Account", "Member", "Home", null, new { @class = "nav-link" })</li>
+                <li>
+                    <div class="container h-100">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="searchbar">
+                                <input class="search_input" type="text" name="" placeholder="I am looking for...    ">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
             @*@Html.Partial("_LoginPartial")*@
         </div>

@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<Data.Feedback>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Feedback";
 }
-
-<h2>Index</h2>
 
 <table class="table">
     <tr>
@@ -31,6 +29,8 @@
 
     @foreach (var item in Model)
     {
+        var obj = item.fbObject ? "Member" : "Guest";
+        var status = item.fbStatus ? "Replied" : "Didn't Reply yet";
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.fbCusname)
@@ -42,13 +42,13 @@
                 @Html.DisplayFor(modelItem => item.memEmail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fbObject)
+                @obj
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fbContent)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fbStatus)
+                @status
             </td>
             <td>
                 @Html.ActionLink(" Reply", "Reply", new { id = item.fbID }, new { @class = "btn btn-sm btn-primary fa fa-reply" })
