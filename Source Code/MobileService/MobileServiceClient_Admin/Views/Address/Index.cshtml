@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<Data.Address>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Address";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(" Add New", "Create", null, new { @class = "btn btn-link fa fa-plus" })
 </p>
+
 <table class="table">
     <tr>
         <th>

@@ -6,12 +6,8 @@ using System.Web.Mvc;
 
 namespace MobileServiceClient.Controllers
 {
-    public class HomeController : Controller
+    public class ORController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
     }
 }

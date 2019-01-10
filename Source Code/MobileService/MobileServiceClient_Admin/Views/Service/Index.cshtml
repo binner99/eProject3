@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<Data.Service>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Service";
 }
 
-<h2>Index</h2>
+<p>
+    @Html.ActionLink(" Add New", "Create", null, new { @class = "btn btn-link fa fa-plus" })
+</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,23 +25,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.sName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sDes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.sID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.sID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.sID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sDes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sPrice)
+            </td>
+            <td>
+                @Html.ActionLink(" Edit", "Edit", new { id = item.sID }, new { @class = "btn btn-sm btn-primary fa fa-edit" })
+                @Html.ActionLink(" Details", "Details", new { id = item.sID }, new { @class = "btn btn-sm btn-info fa fa-info" })
+                @Html.ActionLink(" Delete", "Delete", new { id = item.sID }, new { @class = "btn btn-sm btn-danger fa fa-remove" })
+            </td>
+        </tr>
+    }
 
 </table>
