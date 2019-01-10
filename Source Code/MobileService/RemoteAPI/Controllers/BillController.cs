@@ -36,5 +36,21 @@ namespace RemoteAPI.Controllers
 
             return Ok(bill);
         }
+
+        // POST: api/Bills
+        [ResponseType(typeof(Bill))]
+        public async Task<IHttpActionResult> PostBill(Bill bill)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Bills.Add(bill);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = bill.billID }, bill);
+        }
+
     }
 }
