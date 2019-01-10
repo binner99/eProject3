@@ -15,13 +15,12 @@ namespace MobileServiceClient_Admin.Controllers
         
         string url = "http://localhost:61560/api/Admin/";
         HttpClient client = new HttpClient();
-        //Index
-        [Authorize]
+        //Index        
         public ActionResult Index() => View(client.GetAsync(url).Result.Content.ReadAsAsync<IEnumerable<Admin>>().Result);
-        [Authorize]
+
         //Details
         public ActionResult Details(string adName) => View(client.GetAsync(url + adName).Result.Content.ReadAsAsync<Admin>().Result);
-        [Authorize]
+        
         //Upload
         [HttpPost]
         public JsonResult Upload()
@@ -36,14 +35,9 @@ namespace MobileServiceClient_Admin.Controllers
             file.SaveAs(path);
             return Json(new { UploadedFilename = Request.Files[0].FileName });
         }
-        [Authorize]
+
         //Create
-        public ActionResult Create()
-        {
-            ViewBag.User = HttpContext.User.Identity.Name;
-           return View();
-        }
-        [HttpPost]
+        public ActionResult Create() => View();        
         public ActionResult Create(Admin admin)
         {
             try
@@ -56,7 +50,7 @@ namespace MobileServiceClient_Admin.Controllers
                 return View();
             }
         }
-        [Authorize(Roles ="superadmin")]
+        
         //Delete
         public ActionResult Delete(string adName)
         {
