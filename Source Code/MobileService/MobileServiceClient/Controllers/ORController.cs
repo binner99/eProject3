@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileServiceClient.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,5 +10,12 @@ namespace MobileServiceClient.Controllers
     public class ORController : Controller
     {
         public ActionResult Index() => View();
+        [HttpPost]
+        public PartialViewResult NextPay(OR oR)
+        {
+            TempData["billPhone"] = oR.Phone;
+            TempData["billTotal"] = oR.Amount;
+            return PartialView();
+        }
     }
 }
