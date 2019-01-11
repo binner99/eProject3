@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MobileServiceClient.Models.OR
+@{
     ViewBag.Title = "Home Page";
 }
 <style>
@@ -7,31 +8,47 @@
     }
 </style>
 
-<div class="jumbotron col-11 ml-5 mt-1"  style="opacity: 0.5">
+<div class="jumbotron col-11 ml-5 mt-1">
     <h1>Online Mobile Recharge</h1>
-    <div class="row" >
-        <div class="col-md-4">
-            <div class="form-group ml-5">
-                <label>
-                    <i class="fa fa-mobile" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Mobile Number</span></i>
-                    <input type="text" class="form-control"/>
-                </label>
+    @using (Ajax.BeginForm("NextPay", "OR", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group ml-5">
+                    <label>
+                        <i class="fa fa-mobile" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Mobile Number</span></i>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", id = "Phone", placeholder = "Phone number" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group ml-5">
+                    <label>
+                        <i class="fa fa-inr" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Amount</span></i>
+                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", id = "Amount", placeholder = "Amount (₹)" } })
+                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group ml-5">
+                    <label>
+                        <input class="btn btn-primary mt-4" type="submit" id="btnOR" value="Recharge Now" />
+                    </label>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group ml-5">
-                <label>
-                    <i class="fa fa-inr" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Amount</span></i>
-                    <input type="text" class="form-control"/>
-                </label>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group ml-5">
-                <label>
-                    <button class="btn btn-primary mt-4" >Recharge Now</button>
-                </label>
-            </div>
-        </div>
+    }
+    <div id="formPay" style="display:none;">
+        @Html.Partial("NextPay")
     </div>
+    <script>
+        $("#btnOR").click(function () {
+            if ($("#FormOR").valid() == true) {
+                $("#FormOR").hide("slow");
+                $("#formPay").show("slow");
+            }
+        });
+    </script>
 </div>
