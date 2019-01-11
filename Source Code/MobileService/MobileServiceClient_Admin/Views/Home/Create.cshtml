@@ -9,58 +9,58 @@
 </p>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
 
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.adImage, htmlAttributes: new { @class = "control-label font-weight-bold" })
-        <div class="border ml-3 mb-2" style="width:200px;height:200px;" id="imgFile">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.adImage, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            <div class="border ml-3 mb-2" style="width:200px;height:200px;" id="imgFile">
+            </div>
+
+            <div>
+                @Html.EditorFor(model => model.adImage, new { htmlAttributes = new { @type = "file", @class = "form-control-file", @id = "ImageUpload", @accept = "image/*" } })
+                @Html.ValidationMessageFor(model => model.adImage, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div >
-            @Html.EditorFor(model => model.adImage, new { htmlAttributes = new { @type = "file", @class = "form-control-file", @id = "ImageUpload",@accept = "image/*" } })
-            @Html.ValidationMessageFor(model => model.adImage, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.adName, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            <div>
+                @Html.EditorFor(model => model.adName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.adName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.adName, htmlAttributes: new { @class = "control-label font-weight-bold" })
-        <div >
-            @Html.EditorFor(model => model.adName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.adName, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.adPass, htmlAttributes: new { @class = "control-label font-weight-bold" })
+            <div>
+                @Html.EditorFor(model => model.adPass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.adPass, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.adPass, htmlAttributes: new { @class = "control-label font-weight-bold" })
-        <div >
-            @Html.EditorFor(model => model.adPass, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.adPass, "", new { @class = "text-danger" })
+        <div class="form-group ">
+            @Html.LabelFor(model => model.adRole, htmlAttributes: new { @class = "control-label font-weight-bold " })
+            <div>
+                <div class="checkbox">
+                    Admin
+                    @Html.ValidationMessageFor(model => model.adRole, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group ">
-        @Html.LabelFor(model => model.adRole, htmlAttributes: new { @class = "control-label font-weight-bold " })
-        <div >
-            <div class="checkbox">
-                Admin
-                @Html.ValidationMessageFor(model => model.adRole, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-success" />
-        </div>
-    </div>
-</div>
 }
 
 @section Scripts {

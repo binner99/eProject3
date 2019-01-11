@@ -13,10 +13,10 @@ namespace MobileServiceClient.Controllers
         // GET: Home
         public ActionResult Index() => View();
         
-        public PartialViewResult NextPay(string phone, double amount)
+        public PartialViewResult NextPay(OR oR)
         {
-            TempData["billPhone"] = phone;
-            TempData["billTotal"] = amount;
+            TempData["billPhone"] = oR.Phone;
+            TempData["billTotal"] = oR.Amount;
             return PartialView();
         }
         [HttpPost]
@@ -28,7 +28,7 @@ namespace MobileServiceClient.Controllers
                 billPhone = TempData["billPhone"].ToString(),
                 billTotal = Double.Parse(TempData["billTotal"].ToString()),
                 billDate = DateTime.Now,
-                billDes = "Recharge " + ViewBag.BillTotal
+                billDes = "Recharge " + Double.Parse(TempData["billTotal"].ToString()) + " (₹)"
             };
             var model = client.PostAsJsonAsync<Bill>(url, bill).Result;
             return RedirectToAction("Index");

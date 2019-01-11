@@ -25,6 +25,7 @@ namespace MobileServiceClient
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/font-awesome.css",
+                      "~/Content/StyleSheet.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
