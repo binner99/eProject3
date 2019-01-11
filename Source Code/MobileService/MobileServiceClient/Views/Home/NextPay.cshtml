@@ -1,0 +1,24 @@
+﻿@model MobileServiceClient.Models.PaymentClient
+
+
+@using (Html.BeginForm("Bill","Home",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.Name) } })
+    @Html.ValidationMessageFor(model => model.Name, "")
+
+
+    @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.NumCard), inputmode = "numeric", autocomplete = "cc-number", autocompletetype = "cc-number" } })
+    @Html.ValidationMessageFor(model => model.NumCard, "")
+
+
+    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.CVV) } })
+    @Html.ValidationMessageFor(model => model.CVV, "")
+
+
+    @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.ExDate) } })
+    @Html.ValidationMessageFor(model => model.ExDate, "")
+
+    <input type="submit" id="btnPay" value="Recharge" />
+}
