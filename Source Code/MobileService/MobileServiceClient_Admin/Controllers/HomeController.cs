@@ -9,9 +9,9 @@ namespace MobileServiceClient_Admin.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {            
-        }
+        //public HomeController()
+        //{            
+        //}
         
         string url = "http://localhost:61560/api/Admin/";
         HttpClient client = new HttpClient();
@@ -37,7 +37,8 @@ namespace MobileServiceClient_Admin.Controllers
         }
 
         //Create
-        public ActionResult Create() => View();        
+        public ActionResult Create() => View();
+        [HttpPost]
         public ActionResult Create(Admin admin)
         {
             try
