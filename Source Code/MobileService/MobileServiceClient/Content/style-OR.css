@@ -259,7 +259,6 @@ span.simply-word {
         letter-spacing: 1px;
         font-size: 17px;
         color: #fff;
-        max-width: 96%;
         outline: none;
         border: none;
         display: inline-block;
@@ -267,13 +266,18 @@ span.simply-word {
         border-bottom: 2px solid #f9f9f8;
     }
 
+        .newsletter input[type="text"]:focus {
+            font-size: 37px;
+        }
+        
+
     .newsletter input[type="submit"] {
         font-family: 'PT Sans Narrow', sans-serif;
         display: block;
         width: auto;
         border: groove;
         margin-top: 20px;
-        font-size: 37px;
+        font-size: 30px;
         background: transparent;
         padding: 10px 10px;
         outline: none;
@@ -290,20 +294,22 @@ span.simply-word {
             font-size: 37px;
             color: red;
             border-color: red;
+            font-weight: bold;
             transition: 0.5s all;
             -webkit-transition: 0.5s all;
             -moz-transition: 0.5s all;
             -o-transition: 0.5s all;
         }
+
     .newsletter .field-validation-error {
         color: yellow;
         display: block;
     }
-    /*--//newsletter--*/
-    /*--copyright--*/
-    .copy.w3ls {
-        margin-top: 2em;
-    }
+/*--//newsletter--*/
+/*--copyright--*/
+.copy.w3ls {
+    margin-top: 2em;
+}
 
 .copy p {
     color: #fff;
