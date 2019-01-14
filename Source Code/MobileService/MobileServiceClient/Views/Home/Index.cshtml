@@ -10,7 +10,8 @@
     <div id="FormMain">
         @using (Ajax.BeginForm("NextPay", "Home", new AjaxOptions { HttpMethod="Post"},new { id="FormOR"}))
         {
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @id = "Phone", @placeholder = "Phone number" } })
+
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "Phone", placeholder = "Phone number",maxlength=11,autofocus="" } })
                 @Html.ValidationMessageFor(model => model.Phone, "")
                 @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @id = "Amount", @placeholder = "Amount (₹)" } })
                 @Html.ValidationMessageFor(model => model.Amount, "")
@@ -28,7 +29,5 @@
             $("#formPay").show("slow");
         }
     });
-
-
 </script>
 

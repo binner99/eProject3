@@ -14,10 +14,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.memEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.memPass)
-        </th>
+        </th>        
         <th>Action</th>
     </tr>
 
@@ -32,10 +29,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.memEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.memPass)
-            </td>
+            </td>            
             <td>
                 @Html.ActionLink(" Details", "Details", new { id = item.memPhone }, new { @class = "btn btn-sm btn-info fa fa-info" })
             </td>
