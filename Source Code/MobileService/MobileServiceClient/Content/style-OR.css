@@ -251,26 +251,39 @@ span.simply-word {
 
     .newsletter input[type="text"], input[type="number"] {
         font-family: 'PT Sans Narrow', sans-serif;
+        padding: 13px 15px;
         display: block;
         width: 100%;
-        padding: 13px 15px;
-        width: 50%;
         margin-right: 10px;
         letter-spacing: 1px;
         font-size: 17px;
         color: #fff;
         outline: none;
         border: none;
-        display: inline-block;
         background: transparent;
         border-bottom: 2px solid #f9f9f8;
     }
-
-        .newsletter input[type="text"]:focus {
-            font-size: 37px;
-        }
-        
-
+#btnBack {
+    font-family: 'PT Sans Narrow', sans-serif;
+    display: block;
+    width: auto;
+    border: none;
+    font-size: 20px;
+    background: transparent;
+    outline: none;
+    color: #fff;
+    vertical-align: text-top;
+    cursor: pointer;
+    align-content:flex-start;
+    transition: 0.5s all;
+}
+    #btnBack:hover {
+        font-size: 25px;
+        color: red;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+    }
     .newsletter input[type="submit"] {
         font-family: 'PT Sans Narrow', sans-serif;
         display: block;

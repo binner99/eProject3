@@ -224,6 +224,8 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\NextPay.cshtml" />
     <Content Include="Views\OR\NextPay.cshtml" />
+    <Content Include="Views\Home\InfoBill.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,6 +3,7 @@
 
 @using (Html.BeginForm("Bill","Home",FormMethod.Post))
 {
+    <h2>Payment</h2>
     @Html.AntiForgeryToken()
 
     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.Name) } })
