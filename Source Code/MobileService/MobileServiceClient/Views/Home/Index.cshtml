@@ -9,20 +9,12 @@
     <div id="FormMain">
         @using (Ajax.BeginForm("InfoBill", "Home", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))
         {
-<<<<<<< HEAD
             <h2>Online Recharge Now @ViewBag.BillPhone</h2>
             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "Phone", placeholder = "Phone number", maxlength = 11, autofocus = "" } })
             @Html.ValidationMessageFor(model => model.Phone, "")
             @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @id = "Amount", @placeholder = "Amount (₹)" } })
             @Html.ValidationMessageFor(model => model.Amount, "")
             <input type="submit" id="btnOR" value="Payment Now" />
-=======
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @id = "Phone", @placeholder = "Phone number" } })
-                @Html.ValidationMessageFor(model => model.Phone, "")
-                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @id = "Amount", @placeholder = "Amount (Rs.)" } })
-                @Html.ValidationMessageFor(model => model.Amount, "")
-                <input type="submit" id="btnOR" value="Payment Now" />
->>>>>>> Branch_HM
         }
         <div id="formPay" style="display:none;" align="left">
             <button type="button" id="btnBack"> << Back</button>
@@ -30,8 +22,15 @@
                 <div class="col-7">
                     @Html.Partial("NextPay")
                 </div>
-                <div class="col-5">
-                    @Html.Partial("InfoBill")
+                <div class="col-5" id="infoBill">
+                    @*<h2>Bill Info</h2>*@
+                    @*<div class="text-white">
+            <strong>Phone Number</strong>
+            <p>@TempData["Phone"]</p>
+            <strong>Amount</strong>
+            <p>@TempData["Amount"]</p>
+        </div>*@
+                    
                 </div>
             </div>
         </div>
@@ -39,7 +38,8 @@
 </div>
 <script>
     $("#FormOR").submit(function () {
-        if ($("#FormOR").valid()==true) {
+        if ($("#FormOR").valid() == true) {            
+            $("#infoBill").html(@Html.Partial("InfoBill"));
             $("#FormOR").hide("slow");
             $("#formPay").show("slow");
         }

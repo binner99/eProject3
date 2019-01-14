@@ -1,8 +1,12 @@
 ﻿@model Data.Bill
 <h2>Bill Info</h2>
 <div class="text-white">
-    <strong>Phone Number</strong>
-    <p>@ViewBag.billPhone</p>
-    <strong>Amount</strong>
-    <p>@ViewBag.billTotal</p>
+    @if (@TempData["Phone"] != null)
+    {
+        <strong>Phone Number</strong>
+        <p>@TempData["Phone"].ToString()  ABC</p>
+        <strong>Amount</strong>
+        <p>@TempData["Amount"].ToString()</p>
+    }
+
 </div>

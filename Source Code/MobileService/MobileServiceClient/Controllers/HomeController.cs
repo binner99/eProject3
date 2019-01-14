@@ -8,18 +8,19 @@ namespace MobileServiceClient.Controllers
 {
     public class HomeController : Controller
     {
+        
         string url = "http://localhost:61560/api/Bill/";
         HttpClient client = new HttpClient();
         public ActionResult Home() => View();
         // GET: Home
         public ActionResult Index() => View();
-        [HttpPost]
+        //[HttpPost]
         public PartialViewResult InfoBill(OR oR)
         {
             Session["billPhone"] = oR.Phone;
             Session["billTotal"] = oR.Amount;
-            ViewBag.billPhone = oR.Phone;
-            ViewBag.billTotal = oR.Amount;
+            TempData["Phone"] = oR.Phone;
+            TempData["Amount"] = oR.Amount;
             return PartialView();
         }
         [HttpPost]
