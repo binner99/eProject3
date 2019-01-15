@@ -1,23 +1,32 @@
-﻿using System;
+﻿using Data;
+using MobileServiceClient.Models;
+using System;
 using System.Net.Http;
 using System.Web.Mvc;
-using Data;
-using MobileServiceClient.Models;
 
 namespace MobileServiceClient.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+            ViewBag.Header = "Welcome to KMobile";            
+        }
         string url = "http://localhost:61560/api/Bill/";
         HttpClient client = new HttpClient();
+        public ActionResult Home() => View();
         // GET: Home
-        public ActionResult Index() => View();
-        
-        public PartialViewResult NextPay(OR oR)
+        public ActionResult Index()
+        {            
+            return View();
+        }
+        //[HttpPost]
+        public void InfoBill(OR oR)
         {
-            TempData["billPhone"] = oR.Phone;
-            TempData["billTotal"] = oR.Amount;
-            return PartialView();
+            Session["billPhone"] = oR.Phone;
+            Session["billTotal"] = oR.Amount;
+            ViewData["Phone"] = oR.Phone;
+            ViewData["Amount"] = oR.Amount;
         }
         [HttpPost]
         public ActionResult Bill(PaymentClient paymentClient)
@@ -25,12 +34,13 @@ namespace MobileServiceClient.Controllers
             var bill = new Bill
             {
                 billCusName = paymentClient.Name,
-                billPhone = TempData["billPhone"].ToString(),
-                billTotal = Double.Parse(TempData["billTotal"].ToString()),
+                billPhone = Session["billPhone"].ToString(),
+                billTotal = Double.Parse(Session["billTotal"].ToString()),
                 billDate = DateTime.Now,
-                billDes = "Recharge " + Double.Parse(TempData["billTotal"].ToString()) + " (₹)"
+                billDes = "Recharge " + Double.Parse(Session["billTotal"].ToString()) + " (₹)"
             };
             var model = client.PostAsJsonAsync<Bill>(url, bill).Result;
+            TempData["msg"] = "<p style='color:yellow;'>You Recharged Successfull !</p>";
             return RedirectToAction("Index");
         }
     }

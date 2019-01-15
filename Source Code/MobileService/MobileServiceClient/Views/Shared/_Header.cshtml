@@ -1,29 +1,57 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height : 110px">
-    <div class="container mb-2">
-        <a href="#home"><img src="~/Logo/KMpng.png" height="94" width="259" /></a>
+﻿<header>
+    <div class="row mb-3">        
+        <div class="col-3">
+            <img src="~/Logo/KMpng.png" class="w-100">
+        </div>
+        <div class="content col-12">
 
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav mr-auto">
-    
-                <li class="nav-item">@Html.ActionLink("Online Recharge", "Payment", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Post Bill Payment", "PostPaid", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact Us", "ContactUs", "Home", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("My Account", "Member", "Home", null, new { @class = "nav-link" })</li>
+            <ul id="sdt_menu" class="sdt_menu">
+                <!--Online Recharge-->
                 <li>
-                    <div class="container h-100">
-                        <div class="d-flex justify-content-center h-100">
-                            <div class="searchbar">
-                                <input class="search_input" type="text" name="" placeholder="I am looking for...    ">
-                                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="@Url.Action("Home","Home")" id="@(ViewBag.Current == "Home" ? "active" : "")">
+                        <span class="sdt_wrap">
+                            <span class="sdt_link">Home</span>
+                            <span class="sdt_descr">Somthing</span>
+                        </span>
+                    </a>
+                </li>
+                <!--Online Recharge-->
+                <li>
+                    <a href="@Url.Action("Index","OR")" id="@(ViewBag.Current == "OR" ? "active" : "")">
+                        <span class="sdt_wrap">
+                            <span class="sdt_link">Online Recharge</span>
+                            <span class="sdt_descr">Somthing</span>
+                        </span>
+                    </a>
+                </li>
+                <!--Post Bill-->
+                <li>
+                    <a href="@Url.Action("Index","PBP")" id="@(ViewBag.Current == "PBP" ? "active" : "")">
+                        <span class="sdt_wrap">
+                            <span class="sdt_link">Post Bill Payment</span>
+                            <span class="sdt_descr">Something</span>
+                        </span>
+                    </a>
+                </li>
+                <!--Ass06-->
+                <li>
+                    <a href="@Url.Action("Index","ass06")" id="@(ViewBag.Current == "Contact" ? "active" : "")">
+                        <span class="sdt_wrap">
+                            <span class="sdt_link">Contact Us</span>
+                            <span class="sdt_descr">Practice Data</span>
+                        </span>
+                    </a>
+                </li>
+                <!--Ass09-->
+                <li>
+                    <a href="@Url.Action("Index","ass09")" id="@(ViewBag.Current == "Account" ? "active" : "")">
+                        <span class="sdt_wrap">
+                            <span class="sdt_link">My Account</span>
+                            <span class="sdt_descr">Become our Member</span>
+                        </span>
+                    </a>
                 </li>
             </ul>
-            @*@Html.Partial("_LoginPartial")*@
         </div>
     </div>
-</nav>
+</header>

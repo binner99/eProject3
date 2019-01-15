@@ -10,18 +10,16 @@
     @Scripts.Render("~/bundles/jqueryval")
     <!-- Custom Theme files -->
     <link href="~/Content/style-OR.css" rel="stylesheet" />
-    <!--fonts-->
-    <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
-    <link href="//fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <!--fonts-->    
+    @Styles.Render("~/Content/css")
 
     <!--//fonts-->
 </head>
 <body>
     <div class="bg-agile">
         <div class="text-agileits" align="center">
-            <img src="~/Logo/KMpng.png" style="width:100%;" />
-            <div class="text-agileits-inner">
-                <p>Something</p>
+            <a href="@Url.Action("Home","Home")"><img src="~/Logo/KMpng.png" style="width:100%;" /></a>
+            <div class="text-agileits-inner">                
                 @RenderBody()
                 <div class="copy w3ls">
                     <p>Copyright 2019 KMobile </p>

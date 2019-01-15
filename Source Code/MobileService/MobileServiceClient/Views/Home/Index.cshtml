@@ -4,30 +4,69 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-
+<div id="something">
+    <p>@ViewBag.Header</p>
+    <p>Wish you have a good experience.</p>
+</div>
+<div id="somethingOK" style="display:none">
+    @Html.Raw(TempData["msg"])
+    <p>You can continue or <a href="@Url.Action("Home","Home")">visit us</a></p>
+</div>
 <div class="newsletter">
-    <h2>Online Recharge Now @ViewBag.BillPhone</h2>
     <div id="FormMain">
-        @using (Ajax.BeginForm("NextPay", "Home", new AjaxOptions { HttpMethod="Post"},new { id="FormOR"}))
+        @using (Ajax.BeginForm("InfoBill", "Home", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR", @class = "col-8" }))
         {
-
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "Phone", placeholder = "Phone number",maxlength=11,autofocus="" } })
-                @Html.ValidationMessageFor(model => model.Phone, "")
-                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @id = "Amount", @placeholder = "Amount (₹)" } })
-                @Html.ValidationMessageFor(model => model.Amount, "")
-                <input type="submit" id="btnOR" value="Payment Now" />
+            <h2>Online Recharge Now @ViewBag.BillPhone</h2>
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { id = "Phone", placeholder = "Phone number", maxlength = 11, autofocus = "" } })
+            @Html.ValidationMessageFor(model => model.Phone, "")
+            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @id = "Amount", @placeholder = "Amount (₹)" } })
+            @Html.ValidationMessageFor(model => model.Amount, "")
+            <input type="submit" id="btnOR" value="Payment Now" />
         }
-        <div id="formPay" style="display:none;">
-            @Html.Partial("NextPay")
+        <div id="formPay" style="display:none;" align="left">
+            <button type="button" id="btnBack"> << Back</button>
+            <div class="row">
+                <div class="col-7">
+                    @Html.Partial("NextPay")
+                </div>
+                <div class="col-5" id="infoBill">
+                    <h2>Bill Info</h2>
+                        <div class="text-white">
+                            <strong>Phone Number</strong>
+                            <p id="infoPhone"></p>
+                            <strong>Amount</strong>
+                            <p id="infoAmount"></p>
+                        </div>
+                    @*@Html.Partial("InfoBill")*@
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script>
-    $("#btnOR").click(function () {
-        if ($("#FormOR").valid()==true) {
+    $(window).on("load", function (e) {
+    var notification = "@TempData["msg"]";
+    if (notification != "") {
+        $("#somethingOK").show();
+        $("#something").css("display","none");
+    }
+});
+    $("#Phone").keyup(function () {
+        $("#infoPhone").html($("#Phone").val())
+    });
+    $("#Amount").keyup(function () {
+        $("#infoAmount").html($("#Amount").val() + "(₹)")
+    });
+    $("#FormOR").submit(function () {
+        if ($("#FormOR").valid() == true) {
+            $("#infoBill").on("load");
             $("#FormOR").hide("slow");
             $("#formPay").show("slow");
         }
+    });
+    $("#btnBack").click(function () {
+        $("#FormOR").show("slow");
+        $("#formPay").hide("slow");
     });
 </script>
 

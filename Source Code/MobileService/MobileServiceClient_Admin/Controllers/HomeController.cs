@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace MobileServiceClient_Admin.Controllers
 {
@@ -12,7 +11,7 @@ namespace MobileServiceClient_Admin.Controllers
         //public HomeController()
         //{            
         //}
-        
+
         string url = "http://localhost:61560/api/Admin/";
         HttpClient client = new HttpClient();
         //Index        
@@ -20,14 +19,14 @@ namespace MobileServiceClient_Admin.Controllers
 
         //Details
         public ActionResult Details(string adName) => View(client.GetAsync(url + adName).Result.Content.ReadAsAsync<Admin>().Result);
-        
+
         //Upload
         [HttpPost]
         public JsonResult Upload()
         {
             var file = Request.Files[0];
-            var fileName = Path.GetFileName(file.FileName);
-            var path = Path.Combine(Server.MapPath("~/img/Admin"), fileName);
+            var fileName = Path.GetExtension(file.FileName);
+            var path = Path.Combine(Server.MapPath("~/img/Admin"), "Admin" + fileName);
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -51,7 +50,7 @@ namespace MobileServiceClient_Admin.Controllers
                 return View();
             }
         }
-        
+
         //Delete
         public ActionResult Delete(string adName)
         {

@@ -1,24 +1,32 @@
 ﻿@model MobileServiceClient.Models.PaymentClient
 
 
-@using (Html.BeginForm("Bill","Home",FormMethod.Post))
+@using (Html.BeginForm("Bill", "Home", FormMethod.Post))
 {
+    <h2>Payment</h2>
     @Html.AntiForgeryToken()
 
-    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.Name) } })
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.Name) } })
     @Html.ValidationMessageFor(model => model.Name, "")
 
 
-    @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.NumCard), inputmode = "numeric", autocomplete = "cc-number", autocompletetype = "cc-number" } })
+    @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { maxlength=16, placeholder = Html.NameFor(model => model.NumCard), inputmode = "numeric" } })
     @Html.ValidationMessageFor(model => model.NumCard, "")
 
 
-    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.CVV) } })
+    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { maxlength=3, placeholder = Html.NameFor(model => model.CVV) } })
     @Html.ValidationMessageFor(model => model.CVV, "")
 
 
-    @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { @placeholder = Html.NameFor(model => model.ExDate) } })
+    @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.ExDate), maxlength = 5 } })
     @Html.ValidationMessageFor(model => model.ExDate, "")
 
     <input type="submit" id="btnPay" value="Recharge" />
+    <script>
+        $("#numcard").keyup(function () {
+            if ($("#numcard").length == 4) {
+                $("#numcard").val() + " ";
+            }
+        });
+    </script>
 }
