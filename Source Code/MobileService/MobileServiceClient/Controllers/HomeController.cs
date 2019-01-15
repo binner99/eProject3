@@ -1,27 +1,32 @@
-﻿using System;
+﻿using Data;
+using MobileServiceClient.Models;
+using System;
 using System.Net.Http;
 using System.Web.Mvc;
-using Data;
-using MobileServiceClient.Models;
 
 namespace MobileServiceClient.Controllers
 {
     public class HomeController : Controller
     {
-        
+        public HomeController()
+        {
+            ViewBag.Header = "Welcome to KMobile";            
+        }
         string url = "http://localhost:61560/api/Bill/";
         HttpClient client = new HttpClient();
         public ActionResult Home() => View();
         // GET: Home
-        public ActionResult Index() => View();
+        public ActionResult Index()
+        {            
+            return View();
+        }
         //[HttpPost]
-        public PartialViewResult InfoBill(OR oR)
+        public void InfoBill(OR oR)
         {
             Session["billPhone"] = oR.Phone;
             Session["billTotal"] = oR.Amount;
-            TempData["Phone"] = oR.Phone;
-            TempData["Amount"] = oR.Amount;
-            return PartialView();
+            ViewData["Phone"] = oR.Phone;
+            ViewData["Amount"] = oR.Amount;
         }
         [HttpPost]
         public ActionResult Bill(PaymentClient paymentClient)
@@ -35,6 +40,7 @@ namespace MobileServiceClient.Controllers
                 billDes = "Recharge " + Double.Parse(Session["billTotal"].ToString()) + " (₹)"
             };
             var model = client.PostAsJsonAsync<Bill>(url, bill).Result;
+            TempData["msg"] = "<p style='color:yellow;'>You Recharged Successfull !</p>";
             return RedirectToAction("Index");
         }
     }

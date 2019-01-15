@@ -1,19 +1,228 @@
-﻿/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+﻿body, html {
+    height: 100%;
+    width: 100%;
+    background: url(../Logo/connection-wallpaper-1920x1200.jpg) center no-repeat ;
+    /*background: url('../Logo/50210419_2259873561003525_7184991261231677440_n.png') center;*/
+}
+/*header{
+    background-color: #D293D9;
+    height: 15%;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+footer {
+    background: url('../img/bg_footer.png') top left repeat;
+}*/
+
+ul.sdt_menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Myriad padding: ;ro", "Trebuchet MS", sans-serif;
+    font-size: 14px;
+    width: 100%;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    ul.sdt_menu a {
+        text-decoration: none;
+        outline: none;
+    }
+
+    ul.sdt_menu li {
+        float: left;
+        width: 220px;
+        height: 85px;
+        position: relative;
+        cursor: pointer;
+    }
+
+        ul.sdt_menu li > a {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 220px;
+            height: 85px;
+            background: transparent;
+            text-decoration: none;
+            box-shadow: 0 6px 8px 0 #000, 0 6px 10px 0 #fff;
+        }
+
+#active {
+    box-shadow: none;
 }
+
+ul.sdt_menu li span.sdt_wrap {
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    width: 220px;
+    height: 60px;
+    z-index: 15;
+}
+
+ul.sdt_menu li span span.sdt_link,
+ul.sdt_menu li span span.sdt_descr,
+ul.sdt_menu li div.sdt_box a {
+    margin-left: 15px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+ul.sdt_menu li span span.sdt_link {
+    font-size: 24px;
+    float: left;
+    clear: both;
+}
+
+ul.sdt_menu li span span.sdt_descr {
+    color: #0B75AF;
+    float: left;
+    clear: both;
+    width: 155px; /*For dumbass IE7*/
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+ul.sdt_menu li div.sdt_box {
+    display: block;
+    position: absolute;
+    width: 170px;
+    overflow: hidden;
+    top: 85px;
+    left: 0px;
+    display: none;
+    background: transparent;
+    padding-bottom: 20px;
+}
+
+    ul.sdt_menu li div.sdt_box a {
+        float: left;
+        clear: both;
+        line-height: 30px;
+        color: #fff;
+    }
+
+        ul.sdt_menu li div.sdt_box a:first-child {
+            margin-top: 15px;
+        }
+
+        ul.sdt_menu li div.sdt_box a:hover {
+            color: #fff;
+            text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px yellow;
+        }
+
+/*Footer CSS*/
+#SocialIcon {
+    position: absolute;
+    top: 50%;
+    display: flex;
+}
+
+    #SocialIcon li {
+        list-style: none;
+        margin-right: 50px;
+    }
+
+        #SocialIcon li .fa {
+            font-size: 20px;
+            color: #262626;
+            line-height: 40px;
+            transition: .5s;
+        }
+
+        #SocialIcon li a {
+            position: relative;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            text-align: center;
+            transform: perspective(100px) rotate(-30deg) skew(25deg) translate(0,0);
+            transition: .5s;
+            box-shadow: -20px 20px 10px #fff;
+        }
+
+            #SocialIcon li a::before {
+                content: "";
+                position: absolute;
+                top: 10px;
+                left: -20px;
+                height: 100%;
+                width: 20px;
+                background: #b1b1b1;
+                transition: .5s;
+                transform: rotate(0deg) skewY(-45deg);
+            }
+
+            #SocialIcon li a::after {
+                content: "";
+                position: absolute;
+                top: 40px;
+                left: -11px;
+                height: 20px;
+                width: 100%;
+                background: #b1b1b1;
+                transition: .5s;
+                transform: rotate(0deg) skewX(-45deg);
+            }
+
+            #SocialIcon li a:hover {
+                transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
+                box-shadow: -50px 50px 50px #fff;
+            }
+
+        #SocialIcon li:hover .fa {
+            color: #fff;
+        }
+
+        #SocialIcon li a:hover {
+            transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
+            box-shadow: -50px 50px 50px #fff;
+        }
+
+        #SocialIcon li:hover:nth-child(1) a {
+            background: #3b5999;
+        }
+
+            #SocialIcon li:hover:nth-child(1) a:before {
+                background: #2e4a86;
+            }
+
+            #SocialIcon li:hover:nth-child(1) a:after {
+                background: #4a69ad;
+            }
+
+        #SocialIcon li:hover:nth-child(2) a {
+            background: #e4405f;
+        }
+
+            #SocialIcon li:hover:nth-child(2) a:before {
+                background: #d02d4c;
+            }
+
+            #SocialIcon li:hover:nth-child(2) a:after {
+                background: #f1395c;
+            }
+
+        #SocialIcon li:hover:nth-child(3) a {
+            background: #dd4b39;
+        }
+
+            #SocialIcon li:hover:nth-child(3) a:before {
+                background: #c13929;
+            }
+
+            #SocialIcon li:hover:nth-child(3) a:after {
+                background: #e83322;
+            }
+
+        #SocialIcon li:hover:nth-child(4) a {
+            background: #000;
+        }
+
+            #SocialIcon li:hover:nth-child(4) a:before {
+                background: #333;
+            }
+
+            #SocialIcon li:hover:nth-child(4) a:after {
+                background: #345;
+            }

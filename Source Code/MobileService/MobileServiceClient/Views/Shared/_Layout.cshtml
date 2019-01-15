@@ -13,10 +13,11 @@
 <body>
     @Html.Partial("_Header")
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         @Html.Partial("_Footer")
-    </div>    
+    </div>
     @RenderSection("scripts", required: false)
 </body>
 </html>
