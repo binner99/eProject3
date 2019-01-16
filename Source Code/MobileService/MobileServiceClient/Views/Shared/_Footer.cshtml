@@ -1,40 +1,56 @@
 ﻿<footer class="page-footer font-small">
-        <!--footer-->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-12 col-xs-12">
-                    <h2 class="font-weight-bold">Customer Care</h2>
-                </div>
-                <div class="col-lg-3 col-md-12 col-xs-12" style="color:#030;">
-                    <h2 class="font-weight-bold">Follow Us</h2>
-                    <ul id="SocialIcon">
-                        <li><a href="https://www.facebook.com/binner9225" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="https://youtube.com" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-12 col-xs-12">
-                    <h2 class="font-weight-bold">Site Map</h2>
-                    <ul>
-                        <li>Home</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-12 col-xs-12">
-                    <h2 class="font-weight-bold">Infomation</h2>
-                </div>
+    <!--footer-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-xs-12">
+                <h2 class="font-weight-bold">Customer Care</h2>
             </div>
-            <div>
-                <!--1 slpitting line-->
-                <hr style="border:0.3px solid #FFF;">
+            <div class="col-lg-3 col-md-12 col-xs-12" style="color:#030;">
+                <h2 class="font-weight-bold">Follow Us</h2>
+                <ul id="SocialIcon">
+                    <li><a href="https://www.facebook.com/binner9225" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="https://youtube.com" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-12 col-xs-12">
+                <h2 class="font-weight-bold"><i class="fa fa-sitemap"></i> Site Map</h2>
+                <style>
+                    .sitemap {
+                        list-style: none;
+                        font-size: 20px;
+                    }
+                    .sitemap-item {
+                        cursor: pointer;
+                    }
+                </style>
+                <ul class="sitemap">
+                    <li class="sitemap-item"><i class="fa fa-chevron-circle-right "></i> Home</li>
+                    <li class="sitemap-item" id="smOR"><i id="smORicon" class="fa fa-chevron-circle-right "></i> Online Recharge</li>
+                    <li class="sitemap-item"><i class="fa fa-chevron-circle-right "></i> Post Bill Payment</li>
+                    <li class="sitemap-item"><i id="smCU" class="fa fa-chevron-circle-right "></i> Contact Us</li>
+                    <li class="sitemap-item"><i id="smOR" class="fa fa-chevron-circle-right "></i> My Account</li>
+                </ul>
+                <script>
+                    $("#smOR").on("click", function () {
+                        $("#smORicon").toggleClass('fa-chevron-circle-down',null,true)
+                    });
+                </script>
+            </div>
+            <div class="col-lg-3 col-md-12 col-xs-12">
+                <h2 class="font-weight-bold">Infomation</h2>
             </div>
         </div>
+        <div>
+            <!--1 slpitting line-->
+            <hr style="border:0.3px solid #FFF;">
+        </div>
+    </div>
 
-        <div class="form-group" style="text-align: center">
-            <h4>KMobile</h4>
-            <a href="#">Privacy Policy</a></br>
-            <a href="#">Term & Conditions</a>
-            <p>&copy; @DateTime.Now.Year - KMobile</p>
-        </div>  
+    <div class="form-group" style="text-align: center">
+        <h4>KMobile</h4>
+        <a href="#">Privacy Policy</a></br>
+        <a href="#">Term & Conditions</a>
+        <p>&copy; @DateTime.Now.Year - KMobile</p>
+    </div>
 </footer>
-
-
