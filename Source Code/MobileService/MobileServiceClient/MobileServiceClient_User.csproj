@@ -234,9 +234,12 @@
     <Content Include="Views\Home\NextPay.cshtml" />
     <Content Include="Views\OR\NextPay.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Contact\Index.cshtml" />
+=======
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+>>>>>>> Branch_MM
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
