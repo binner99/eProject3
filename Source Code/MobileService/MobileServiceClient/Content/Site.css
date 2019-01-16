@@ -1,15 +1,13 @@
 ﻿body, html {
-    height: 100%;
-    width: 100%;
+    padding: 10px;
     background: url(../Logo/connection-wallpaper-1920x1200.jpg) center no-repeat ;
-    /*background: url('../Logo/50210419_2259873561003525_7184991261231677440_n.png') center;*/
 }
 /*header{
     background-color: #D293D9;
     height: 15%;
-}
+}*/
 
-footer {
+/*footer {
     background: url('../img/bg_footer.png') top left repeat;
 }*/
 
@@ -112,13 +110,14 @@ ul.sdt_menu li div.sdt_box {
 
 /*Footer CSS*/
 #SocialIcon {
-    position: absolute;
-    top: 50%;
+    /*position: absolute;*/
+    /*top: 50%;*/
     display: flex;
 }
 
     #SocialIcon li {
         list-style: none;
+        display: block;
         margin-right: 50px;
     }
 
@@ -138,7 +137,7 @@ ul.sdt_menu li div.sdt_box {
             text-align: center;
             transform: perspective(100px) rotate(-30deg) skew(25deg) translate(0,0);
             transition: .5s;
-            box-shadow: -20px 20px 10px #fff;
+            box-shadow: -20px 20px 10px #000;
         }
 
             #SocialIcon li a::before {
@@ -167,7 +166,7 @@ ul.sdt_menu li div.sdt_box {
 
             #SocialIcon li a:hover {
                 transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
-                box-shadow: -50px 50px 50px #fff;
+                box-shadow: -50px 50px 50px #000;
             }
 
         #SocialIcon li:hover .fa {
@@ -176,7 +175,7 @@ ul.sdt_menu li div.sdt_box {
 
         #SocialIcon li a:hover {
             transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
-            box-shadow: -50px 50px 50px #fff;
+            box-shadow: -50px 50px 50px #000;
         }
 
         #SocialIcon li:hover:nth-child(1) a {
@@ -192,37 +191,26 @@ ul.sdt_menu li div.sdt_box {
             }
 
         #SocialIcon li:hover:nth-child(2) a {
-            background: #e4405f;
+            background: #1DA1F2;
         }
 
             #SocialIcon li:hover:nth-child(2) a:before {
-                background: #d02d4c;
+                background: #1574af;
             }
 
             #SocialIcon li:hover:nth-child(2) a:after {
-                background: #f1395c;
+                background: #22abff;
             }
 
         #SocialIcon li:hover:nth-child(3) a {
-            background: #dd4b39;
+            background: #CB1E21;
         }
 
             #SocialIcon li:hover:nth-child(3) a:before {
-                background: #c13929;
+                background: #751113;
             }
 
             #SocialIcon li:hover:nth-child(3) a:after {
-                background: #e83322;
+                background: #ff272b;
             }
 
-        #SocialIcon li:hover:nth-child(4) a {
-            background: #000;
-        }
-
-            #SocialIcon li:hover:nth-child(4) a:before {
-                background: #333;
-            }
-
-            #SocialIcon li:hover:nth-child(4) a:after {
-                background: #345;
-            }
