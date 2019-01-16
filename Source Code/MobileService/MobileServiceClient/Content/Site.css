@@ -214,14 +214,3 @@ ul.sdt_menu li div.sdt_box {
                 background: #ff272b;
             }
 
-        #SocialIcon li:hover:nth-child(4) a {
-            background: #000;
-        }
-
-            #SocialIcon li:hover:nth-child(4) a:before {
-                background: #333;
-            }
-
-            #SocialIcon li:hover:nth-child(4) a:after {
-                background: #345;
-            }
