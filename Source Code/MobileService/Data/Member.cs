@@ -11,6 +11,7 @@ namespace Data
         [Required]
         [StringLength(11,MinimumLength =10)]
         [Display(Name ="Phone Number")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Phone must be numeric")]
         public string memPhone { get; set; }
 
         
