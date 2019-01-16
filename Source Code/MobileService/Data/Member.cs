@@ -31,5 +31,12 @@ namespace Data
         [StringLength(50, MinimumLength = 6)]
         [Display(Name = "Password")]
         public string memPass { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("memPass")]
+        [StringLength(50, MinimumLength = 6)]
+        [Display(Name = "Confirm Password")]
+        public string memConfirmPass { get; set; }
     }
 }
