@@ -9,46 +9,48 @@
 </style>
 
 <div class="card">
-    <h1>Online Mobile Recharge</h1>
-    @using (Ajax.BeginForm("NextPay", "OR", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))
-    {
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group ml-5">
-                    <label>
-                        <i class="fa fa-mobile" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Mobile Number</span></i>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", id = "Phone", placeholder = "Phone number" } })
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                    </label>
+    <div class="card-header"><h1>Online Mobile Recharge</h1></div>
+    <div class="card-body">
+        @using (Ajax.BeginForm("NextPay", "OR", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <i class="fa fa-mobile" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Mobile Number</span></i>
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", id = "Phone", placeholder = "Phone number" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <i class="fa fa-inr" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Amount</span></i>
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", id = "Amount", placeholder = "Amount (₹)" } })
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <input class="btn btn-primary mt-4" type="submit" id="btnOR" value="Recharge Now" />
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group ml-5">
-                    <label>
-                        <i class="fa fa-inr" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Amount</span></i>
-                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", id = "Amount", placeholder = "Amount (₹)" } })
-                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group ml-5">
-                    <label>
-                        <input class="btn btn-primary mt-4" type="submit" id="btnOR" value="Recharge Now" />
-                    </label>
-                </div>
-            </div>
+        }
+        <div class="col-4" id="formPay" style="display:none;">
+            @Html.Partial("NextPay")
         </div>
-    }
-    <div id="formPay" style="display:none;">
-        @Html.Partial("NextPay")
+        <script>
+            $("#btnOR").click(function () {
+                if ($("#FormOR").valid() == true) {
+                    $("#FormOR").hide("slow");
+                    $("#formPay").show("slow");
+                }
+            });
+        </script>
     </div>
-    <script>
-        $("#btnOR").click(function () {
-            if ($("#FormOR").valid() == true) {
-                $("#FormOR").hide("slow");
-                $("#formPay").show("slow");
-            }
-        });
-    </script>
 </div>

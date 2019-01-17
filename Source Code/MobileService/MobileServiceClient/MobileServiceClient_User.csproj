@@ -120,8 +120,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ORController.cs" />
+    <Compile Include="Controllers\PBPayController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,7 +141,13 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Logo\50210419_2259873561003525_7184991261231677440_n.png" />
+    <Content Include="Logo\adcalling.png" />
+    <Content Include="Logo\adpostbill.png" />
+    <Content Include="Logo\adsms.png" />
+    <Content Include="Logo\callingad.jpg" />
     <Content Include="Logo\connection-wallpaper-1920x1200.jpg" />
+    <Content Include="Logo\servicesmember.gif" />
+    <Content Include="Logo\textingad.jpeg" />
     <Content Include="Scripts\Menunav.js" />
     <Content Include="Content\style-OR.css" />
     <Content Include="favicon.ico" />
@@ -227,11 +235,13 @@
     <Content Include="Views\Home\NextPay.cshtml" />
     <Content Include="Views\OR\NextPay.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PBPay\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

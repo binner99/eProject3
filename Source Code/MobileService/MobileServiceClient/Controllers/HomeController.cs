@@ -14,7 +14,7 @@ namespace MobileServiceClient.Controllers
         }
         string url = "http://localhost:61560/api/Bill/";
         HttpClient client = new HttpClient();
-        public ActionResult Home() => View();
+        public ActionResult Home() => View(ViewBag.Current = "Home");
         // GET: Home
         public ActionResult Index()
         {            
