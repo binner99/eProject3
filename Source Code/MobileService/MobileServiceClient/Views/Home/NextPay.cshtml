@@ -10,23 +10,31 @@
     @Html.ValidationMessageFor(model => model.Name, "")
 
 
-    @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { maxlength=16, placeholder = Html.NameFor(model => model.NumCard), inputmode = "numeric" } })
+    @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { id="numCard", maxlength = 19, placeholder = Html.NameFor(model => model.NumCard), inputmode = "numeric" } })
     @Html.ValidationMessageFor(model => model.NumCard, "")
 
 
-    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { maxlength=3, placeholder = Html.NameFor(model => model.CVV) } })
+    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { maxlength = 3, placeholder = Html.NameFor(model => model.CVV) } })
     @Html.ValidationMessageFor(model => model.CVV, "")
 
 
-    @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.ExDate), maxlength = 5 } })
+    @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { id="ExDate",placeholder = Html.NameFor(model => model.ExDate), maxlength = 5 } })
     @Html.ValidationMessageFor(model => model.ExDate, "")
 
     <input type="submit" id="btnPay" value="Recharge" />
+    <button id="Demobtn">Click</button>
     <script>
-        $("#numcard").keyup(function () {
-            if ($("#numcard").length == 4) {
-                $("#numcard").val() + " ";
-            }
+        document.getElementById('numCard').addEventListener('input', function (e) {
+            var target = e.target, position = target.selectionEnd, length = target.value.length;
+
+            target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+            target.selectionEnd = position += ((target.value.charAt(position - 1) === ' ' && target.value.charAt(length - 1) === ' ' && length !== target.value.length) ? 1 : 0);
+        });
+        document.getElementById('ExDate').addEventListener('input', function (e) {
+            var target = e.target, position = target.selectionEnd, length = target.value.length;
+
+            target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1/').trim();
+            //target.selectionEnd = position += ((target.value.charAt(position - 1) === ' ' && target.value.charAt(length - 1) === ' ' && length !== target.value.length) ? 1 : 0);
         });
     </script>
 }
