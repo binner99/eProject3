@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Models\OR.cs" />
     <Compile Include="Models\PaymentClient.cs" />
+    <Compile Include="Models\PBpay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,13 +236,14 @@
     <Content Include="Views\Home\NextPay.cshtml" />
     <Content Include="Views\OR\NextPay.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\PBPay\Index.cshtml" />
+    <Content Include="Views\PBPay\NextPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PBPay\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
