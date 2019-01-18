@@ -14,7 +14,7 @@
 
 <div class="card" style="background-color: rgba(0,0,0,0.8)">
     <div class="card-header"><h1>Post Bill Payment</h1></div>
-    <div class="card-body">
+    <div class="card-body" style="text-align">
         @using (Ajax.BeginForm("NextPay", "PBPay", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormPB" }))
         {
             <div class="row">
@@ -50,7 +50,7 @@
             @Html.Partial("NextPay")
         </div>
         <script>
-            $("#btnOR").click(function () {
+            $("#btnPB").click(function () {
                 if ($("#FormPB").valid() == true) {
                     $("#FormPB").hide("slow");
                     $("#formPay").show("slow");
