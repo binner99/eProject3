@@ -9,6 +9,10 @@ namespace MobileServiceClient.Controllers
 {
     public class ContactController : Controller
     {
+        public ContactController()
+        {
+            ViewBag.Current = "Contact";
+        }
         // GET: Contact
         public ActionResult Index()
         {
