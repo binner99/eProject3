@@ -6,9 +6,12 @@
     body {
         font-family: Calibri;
     }
+    .card h1, i{
+        color: whitesmoke
+    }
 </style>
 
-<div class="card">
+<div class="card" style="background-color: rgba(0,0,0,0.8)">
     <div class="card-header"><h1>Online Mobile Recharge</h1></div>
     <div class="card-body">
         @using (Ajax.BeginForm("NextPay", "OR", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))

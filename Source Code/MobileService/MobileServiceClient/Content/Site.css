@@ -1,6 +1,6 @@
 ﻿body, html {
-    padding: 10px;
-    background: url(../Logo/connection-wallpaper-1920x1200.jpg) center no-repeat ;
+    /*padding: 10px;*/
+    background: url(../Logo/connection-wallpaper-1920x1200.jpg) center repeat ;
 }
 /*header{
     background-color: #D293D9;
