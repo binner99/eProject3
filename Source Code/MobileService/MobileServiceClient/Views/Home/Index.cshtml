@@ -50,11 +50,11 @@
         $("#somethingOK").show();
         $("#something").css("display","none");
     }
-});
-    $("#Phone").keyup(function () {
+    });
+    $("#Phone").change(function () {
         $("#infoPhone").html($("#Phone").val())
     });
-    $("#Amount").keyup(function () {
+    $("#Amount").change(function () {
         $("#infoAmount").html($("#Amount").val() + "(₹)")
     });
     $("#FormOR").submit(function () {

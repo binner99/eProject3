@@ -21,8 +21,8 @@ namespace MobileServiceClient.Controllers
         [HttpPost]
         public PartialViewResult NextPay(PBpay pBpay)
         {
-            TempData["billTotal"] = pBpay.Amount;
-            TempData["billDes"] = pBpay.BillCode;
+            Session["billTotal"] = pBpay.Amount;
+            Session["billDes"] = pBpay.BillCode;
             return PartialView();
         }
     }

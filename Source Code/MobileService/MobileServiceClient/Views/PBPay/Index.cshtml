@@ -18,7 +18,6 @@
         @using (Ajax.BeginForm("NextPay", "PBPay", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormPB" }))
         {
             <div class="row">
-
                 <div class="col-md-4">
                     <div class="form-group ml-5">
                         <label>
@@ -46,15 +45,39 @@
                 </div>
             </div>
         }
-        <div class="col-4" id="formPay" style="display:none;">
-            @Html.Partial("NextPay")
+        <div class="row" id="formPay" style="display:none;">            
+            <div class="col-6">
+                <button type="button" id="btnBack" class="btn btn-outline-light"> Back</button>
+                @Html.Partial("NextPay")
+            </div>
+            <div class="col-6 text-white">
+                <h2>Bill Info</h2>
+                <div>
+                    <strong>Phone Number</strong>
+                    <p id="infoPhone"></p>
+                    <strong>Bill Code</strong>
+                    <p id="infoBill"></p>
+                    <strong>Amount</strong>
+                    <p id="infoAmount"></p>
+                </div>
+            </div>
         </div>
         <script>
-            $("#btnPB").click(function () {
+            $("#FormPB").submit(function () {
                 if ($("#FormPB").valid() == true) {
                     $("#FormPB").hide("slow");
                     $("#formPay").show("slow");
                 }
+            });
+            $("#BillCode").change(function () {
+                $("#infoBill").html($("#Phone").val())
+            });
+            $("#Amount").change(function () {
+                $("#infoAmount").html($("#Amount").val() + "(₹)")
+            });
+            $("#btnBack").click(function () {
+                $("#FormPB").show("slow");
+                $("#formPay").hide("slow");
             });
         </script>
     </div>
