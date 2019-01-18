@@ -9,7 +9,9 @@ namespace MobileServiceClient
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/Menunav.js"
+                        "~/Scripts/Menunav.js",
+                        "~/Script/Account.min.js",
+                        "~/Scripts/Profile-Edit-Form.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,6 +29,7 @@ namespace MobileServiceClient
                       "~/Content/font-awesome.css",
                       "~/Content/StyleSheet.css",
                       "~/Content/bootstrap.css",
+                      "~/Content/styles_Account.min.css",
                       "~/Content/site.css"));
         }
     }

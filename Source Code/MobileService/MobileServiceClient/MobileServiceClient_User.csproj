@@ -127,8 +127,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OR.cs" />
     <Compile Include="Models\PaymentClient.cs" />
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,14 +142,19 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Profile-Edit-Form-1.css" />
+    <Content Include="Content\Profile-Edit-Form.css" />
+    <Content Include="Content\styles_Account.min.css" />
     <Content Include="Logo\50210419_2259873561003525_7184991261231677440_n.png" />
     <Content Include="Logo\adcalling.png" />
     <Content Include="Logo\adpostbill.png" />
     <Content Include="Logo\adsms.png" />
     <Content Include="Logo\callingad.jpg" />
     <Content Include="Logo\connection-wallpaper-1920x1200.jpg" />
+    <Content Include="Logo\profile.jpg" />
     <Content Include="Logo\servicesmember.gif" />
     <Content Include="Logo\textingad.jpeg" />
+    <Content Include="Scripts\Account.min.js" />
     <Content Include="Scripts\Menunav.js" />
     <Content Include="Content\style-OR.css" />
     <Content Include="favicon.ico" />
@@ -203,6 +210,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Profile-Edit-Form.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -238,6 +246,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\MyAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

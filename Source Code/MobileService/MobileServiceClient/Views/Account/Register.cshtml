@@ -1,60 +1,28 @@
 ﻿@model Data.Member
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Register Member</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.memPhone, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.memPhone, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.memPhone, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.memName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.memName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.memName, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.memEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.memEmail, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.memEmail, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.memPass, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.PasswordFor(model => model.memPass, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.memPass, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.memConfirmPass, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.PasswordFor(model => model.memConfirmPass, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.memConfirmPass, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Regsiter" class="btn btn-primary" />
-        </div>
+<div class="register-photo">
+    <div class="form-container">
+        <div data-aos="slide-up" data-aos-duration="1200" class="image-holder"></div>
+        <form method="post" data-aos="slide-down" data-aos-duration="1200" data-aos-delay="100" data-aos-once="true">
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <div class="form-group">
+                <input class="bg-white border rounded border-primary shadow form-control" type="email" name="Phone" required="" placeholder="Phone number" maxlength="11" minlength="10" autofocus="" inputmode="numeric" data-aos="slide-right" data-aos-duration="1200"
+                       data-aos-delay="200">
+            </div>
+            <div class="form-group">
+                <input class="bg-white border rounded border-primary shadow form-control" type="email" name="Email" required="" placeholder="Email" maxlength="11" minlength="10" autofocus="" inputmode="email" data-aos="slide-left" data-aos-duration="1200"
+                       data-aos-delay="300">
+            </div>
+            <div class="form-group"><input class="bg-white border rounded border-primary shadow form-control" type="password" name="password" required="" placeholder="Password" minlength="6" data-aos="slide-right" data-aos-duration="1200" data-aos-delay="400"></div>
+            <div class="form-group"><input class="bg-white border rounded border-primary shadow form-control" type="password" name="password-repeat" placeholder="Password (repeat)" minlength="6" data-aos="slide-left" data-aos-duration="1200" data-aos-delay="500"></div>
+            <div class="form-group">
+                <div class="form-check" data-aos="slide-right" data-aos-duration="1200" data-aos-delay="600"><label class="form-check-label text-monospace"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" data-bs-hover-animate="pulse">Sign Up</button></div><a href="#" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="750" class="already" style="font-size: 16px;"><strong>You already have an account? <span style="text-decoration: underline;">Login here.</span></strong></a>
+        </form>
     </div>
 </div>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

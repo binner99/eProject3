@@ -3,45 +3,20 @@
 @{
     ViewBag.Title = "Login";
 }
-<style>
-    div.form-group{
-        margin-left: 5  %;
-    }
-    
-</style>    
-<h2>Member Login</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.memPhone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.memPhone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.memPhone, "", new { @class = "text-danger" })
+<div class="register-photo">
+    <div class="form-container">
+        <div data-aos="slide-up" data-aos-duration="1200" class="image-holder"></div>
+        <form method="post" data-aos="slide-down" data-aos-duration="1200" data-aos-delay="100" data-aos-once="true">
+            <h1 class="text-center text-primary" data-aos="fade">log<strong><span style="text-decoration: underline;">in</span></strong></h1>
+            <div class="form-group">
+                <input class="bg-white border rounded border-primary shadow form-control" type="email" name="Phone" required="" placeholder="Phone number" maxlength="11" minlength="10" autofocus="" inputmode="numeric" data-aos="slide-right" data-aos-duration="1200"
+                       data-aos-delay="200">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.memPass, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.memPass, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.memPass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-dark" />
-            </div>
-        </div>
+            <div class="form-group"><input class="bg-white border rounded border-primary shadow form-control" type="password" name="password" required="" placeholder="Password" minlength="6" data-aos="slide-left" data-aos-duration="1200" data-aos-delay="400"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" data-bs-hover-animate="pulse">Login</button></div>
+        </form>
     </div>
-}
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

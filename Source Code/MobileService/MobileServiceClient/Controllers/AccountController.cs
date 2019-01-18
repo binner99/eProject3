@@ -12,13 +12,8 @@ namespace MobileServiceClient.Controllers
         {
             ViewBag.Current = "Account";
         }
-        public ActionResult Login()
-        {
-            return View();
-        }
-        public ActionResult Register()
-        {
-            return View();
-        }
+        public ActionResult Login() => View();
+        public ActionResult Register() => View();
+        public ActionResult MyAccount() => View();
     }
 }

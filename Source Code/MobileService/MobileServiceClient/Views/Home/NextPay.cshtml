@@ -4,7 +4,7 @@
 @using (Html.BeginForm("Bill", "Home", FormMethod.Post))
 {
     <h2>Payment</h2>
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()        
 
     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = Html.NameFor(model => model.Name) } })
     @Html.ValidationMessageFor(model => model.Name, "")
@@ -22,7 +22,7 @@
     @Html.ValidationMessageFor(model => model.ExDate, "")
 
     <input type="submit" id="btnPay" value="Recharge" />
-    <button id="Demobtn">Click</button>
+    @*<button id="Demobtn">Click</button>*@
     <script>
         document.getElementById('numCard').addEventListener('input', function (e) {
             var target = e.target, position = target.selectionEnd, length = target.value.length;
@@ -32,9 +32,10 @@
         });
         document.getElementById('ExDate').addEventListener('input', function (e) {
             var target = e.target, position = target.selectionEnd, length = target.value.length;
-
+            
             target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1/').trim();
-            //target.selectionEnd = position += ((target.value.charAt(position - 1) === ' ' && target.value.charAt(length - 1) === ' ' && length !== target.value.length) ? 1 : 0);
+            if (target.value.length == 6) {
+            }
         });
     </script>
 }
