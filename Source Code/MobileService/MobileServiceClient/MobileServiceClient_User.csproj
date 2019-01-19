@@ -147,6 +147,7 @@
     <Content Include="Content\Profile-Edit-Form.css" />
     <Content Include="Content\styles_Account.min.css" />
     <Content Include="Logo\50210419_2259873561003525_7184991261231677440_n.png" />
+    <Content Include="Logo\accepted_cards.png" />
     <Content Include="Logo\adcalling.png" />
     <Content Include="Logo\adpostbill.png" />
     <Content Include="Logo\adsms.png" />

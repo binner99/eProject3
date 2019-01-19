@@ -44,15 +44,53 @@
                 </div>
             </div>
         }
-        <div class="col-4" id="formPay" style="display:none;">
-            @Html.Partial("NextPay")
+        <div id="formPay" style="display:none;">
+            <button type="button" id="btnBack" class="btn btn-outline-light"> Back</button>
+            <div class="row">
+                <div class="col-6">
+                    @Html.Partial("NextPay")
+                </div>
+                <div class="col-6 text-white">
+                    <div class=".payment-dialog-row text-black-50">
+                        <div class="card credit-card-box">
+                            <div class="card-header">
+                                <h3><span class="panel-title-text">Bill Info. </span></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Phone Number</label>
+                                    <input type="tel" class="form-control" id="billPhone" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Content</label>
+                                    <textarea class="form-control" readonly rows="3" wrap="soft" cols="4" id="billContent"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Total </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-rupee text-black-50"></i></span></div>
+                                        <input type="number" class="form-control w-25" id="billTotal" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
-            $("#btnOR").click(function () {
+            $("#FormOR").submit(function () {
                 if ($("#FormOR").valid() == true) {
                     $("#FormOR").hide("slow");
                     $("#formPay").show("slow");
+                    $("#billPhone").val($("#Phone").val());
+                    $("#billContent").html("Online Recharge " + $("#Amount").val() +" (₹) for Phone number " + '"' + $("#Phone").val() + '"');
+                    $("#billTotal").val($("#Amount").val());
                 }
+            });
+            $("#btnBack").click(function () {
+                $("#FormOR").show("slow");
+                $("#formPay").hide("slow");
             });
         </script>
     </div>

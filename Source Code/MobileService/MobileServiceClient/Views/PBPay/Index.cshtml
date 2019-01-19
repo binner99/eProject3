@@ -45,36 +45,50 @@
                 </div>
             </div>
         }
-        <div class="row" id="formPay" style="display:none;">            
-            <div class="col-6">
+            <div id="formPay" style="display:none;">
                 <button type="button" id="btnBack" class="btn btn-outline-light"> Back</button>
-                @Html.Partial("NextPay")
-            </div>
-            <div class="col-6 text-white">
-                <h2>Bill Info</h2>
-                <div>
-                    <strong>Phone Number</strong>
-                    <p id="infoPhone"></p>
-                    <strong>Bill Code</strong>
-                    <p id="infoBill"></p>
-                    <strong>Amount</strong>
-                    <p id="infoAmount"></p>
+                <div class="row">
+                    <div class="col-6">
+                        @Html.Partial("NextPay")
+                    </div>
+                    <div class="col-6 text-white">
+                        <div class=".payment-dialog-row text-black-50">
+                            <div class="card credit-card-box">
+                                <div class="card-header">
+                                    <h3><span class="panel-title-text">Bill Info. </span></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Phone Number</label>
+                                        <input type="tel" class="form-control" value="0916497870" disabled />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Content</label>
+                                        <textarea class="form-control" readonly rows="3" wrap="soft" cols="4" id="billContent"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total </label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-rupee text-black-50"></i></span></div>
+                                            <input type="number" class="form-control w-25" id="billTotal" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         <script>
             $("#FormPB").submit(function () {
                 if ($("#FormPB").valid() == true) {
                     $("#FormPB").hide("slow");
                     $("#formPay").show("slow");
+                    $("#billTotal").val($("#Amount").val());
+                    $("#billContent").html("Post bill payment with Bill code " + '"' + $("#BillCode").val() + '"');
                 }
             });
-            $("#BillCode").change(function () {
-                $("#infoBill").html($("#Phone").val())
-            });
-            $("#Amount").change(function () {
-                $("#infoAmount").html($("#Amount").val() + "(₹)")
-            });
+  
             $("#btnBack").click(function () {
                 $("#FormPB").show("slow");
                 $("#formPay").hide("slow");

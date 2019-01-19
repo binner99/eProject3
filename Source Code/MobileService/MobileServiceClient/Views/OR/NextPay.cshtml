@@ -1,46 +1,62 @@
 ﻿@model MobileServiceClient.Models.PaymentClient
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal text-white" >
-        <h4>PaymentClient</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+<div class=".payment-dialog-row text-black-50">
+    <div class="card credit-card-box">
+        <div class="card-header">
+            <h3><span class="panel-title-text">Payment Details </span><img class="img-fluid panel-title-image" src="~/Logo/accepted_cards.png"></h3>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumCard, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
-            @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NumCard, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CVV, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
-            @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CVV, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ExDate, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
-            @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ExDate, "", new { @class = "text-danger" })
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="cardNumber">Name on Card </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user text-black-50"></i></span></div>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control font-weight-bold", required = "", placeholder = "John" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="cardNumber">Card number </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-credit-card-alt text-black-50"></i></span></div>
+                                @Html.EditorFor(model => model.NumCard, new { htmlAttributes = new { @class = "form-control font-weight-bold", required = "", placeholder = "**** **** **** ****" } })
+                                @Html.ValidationMessageFor(model => model.NumCard, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ExDate, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
+                            @Html.EditorFor(model => model.ExDate, new { htmlAttributes = new { @class = "form-control", placeholder = "MM/YY" } })
+                            @Html.ValidationMessageFor(model => model.ExDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-5 pull-right">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CVV, htmlAttributes: new { @class = "form-control-label font-weight-bold" })
+                            @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control", placeholder = "***" } })
+                            @Html.ValidationMessageFor(model => model.CVV, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12"><button class="btn btn-success btn-block btn-lg" type="submit">Start Subscription</button></div>
+                </div>
+            }
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Pay" class="btn btn-success" />
-        </div>
-    </div>
-}
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
