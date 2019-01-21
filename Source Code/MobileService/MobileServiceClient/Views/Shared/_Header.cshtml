@@ -11,25 +11,29 @@
                     <a href="@Url.Action("Home","Home")" id="@(ViewBag.Current == "Home" ? "active" : "")">
                         <span class="sdt_wrap">
                             <span class="sdt_link">Home</span>
-                            <span class="sdt_descr">Somthing</span>
+                            <span class="sdt_descr">Welcom to us.</span>
                         </span>
                     </a>
                 </li>
                 <!--Online Recharge-->
                 <li>
-                    <a href="@Url.Action("Index","OR")" id="@(ViewBag.Current == "OR" ? "active" : "")">
+                    <a href="@Url.Action("ORNormal","OR")" id="@(ViewBag.Current == "OR" ? "active" : "")">
                         <span class="sdt_wrap">
                             <span class="sdt_link">Online Recharge</span>
-                            <span class="sdt_descr">Somthing</span>
-                        </span>
+                            <span class="sdt_descr">Fast & Convenient</span>
+                        </span>                         
                     </a>
+                    <div class="sdt_box">
+                        <a href="@Url.Action("ORNormal","OR")">Normal</a>
+                        <a href="@Url.Action("ORSpecial","OR")">Special</a>
+                    </div>
                 </li>
                 <!--Post Bill-->
                 <li>
                     <a href="@Url.Action("Index","PBPay")" id="@(ViewBag.Current == "PBPay" ? "active" : "")">
                         <span class="sdt_wrap">
                             <span class="sdt_link">Post Bill Payment</span>
-                            <span class="sdt_descr">Something</span>
+                            <span class="sdt_descr">Modern & Convenient</span>
                         </span>
                     </a>
                 </li>
@@ -44,12 +48,16 @@
                 </li>
                 <!--Ass09-->
                 <li>
-                    <a href="@Url.Action("Login","Account")" id="@(ViewBag.Current == "Account" ? "active" : "")">
+                    <a href="@Url.Action("MyAccount","Account")" id="@(ViewBag.Current == "Account" ? "active" : "")">
                         <span class="sdt_wrap">
                             <span class="sdt_link">My Account</span>
                             <span class="sdt_descr">Become our Member</span>
                         </span>
                     </a>
+                    <div class="sdt_box">
+                        <a href="@Url.Action("Login","Account")">Login</a>
+                        <a href="@Url.Action("Register","Account")">Register</a>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace MobileServiceClient.Models
         [Range(100, 100000)]
         [Display(Name = "Amount")]
         public double Amount { get; set; }
-    
+        public IEnumerable<Product> Package { get; set; }
+
     }
 }

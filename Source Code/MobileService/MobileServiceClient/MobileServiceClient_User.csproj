@@ -228,7 +228,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\OR\Index.cshtml" />
+    <Content Include="Views\OR\ORNormal.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -251,6 +251,11 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\PBPay\Index.cshtml" />
     <Content Include="Views\PBPay\NextPay.cshtml" />
+    <Content Include="Views\OR\_PriceListORNormal.cshtml" />
+    <Content Include="Views\OR\_PriceListORSpecial.cshtml" />
+    <Content Include="Views\OR\ORSpecial.cshtml" />
+    <Content Include="Views\Account\Service.cshtml" />
+    <Content Include="Views\Account\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -44,11 +44,22 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.pPrice, htmlAttributes: new { @class = "control-label font-weight-bold" })
-            <div >
-                @Html.EditorFor(model => model.pPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.pPrice, "", new { @class = "text-danger" })
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.pMP, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-rupee"></i></span></div>
+                    @Html.EditorFor(model => model.pMP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.pMP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.pMR, htmlAttributes: new { @class = "control-label font-weight-bold" })
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-rupee"></i></span></div>
+                    @Html.EditorFor(model => model.pMR, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.pMR, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 

@@ -15,5 +15,7 @@ namespace MobileServiceClient.Controllers
         public ActionResult Login() => View();
         public ActionResult Register() => View();
         public ActionResult MyAccount() => View();
+        public ActionResult Service() => View();
+        public ActionResult History() => View();
     }
 }

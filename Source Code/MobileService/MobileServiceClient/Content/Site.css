@@ -88,8 +88,10 @@ ul.sdt_menu li div.sdt_box {
     top: 85px;
     left: 0px;
     display: none;
-    background: transparent;
+    background-color: rgba(27, 6, 55, 0.63);
     padding-bottom: 20px;
+    z-index: 1;
+    position: relative;
 }
 
     ul.sdt_menu li div.sdt_box a {

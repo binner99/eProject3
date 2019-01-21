@@ -1,0 +1,105 @@
+﻿@model MobileServiceClient.Models.OR
+@{
+    ViewBag.Title = "Normal OR";
+}
+<style>
+    body {
+        font-family: Calibri;
+    }
+
+    .card h1, i {
+        color: whitesmoke
+    }
+</style>
+
+<div class="card" style="background-color: rgba(0,0,0,0.8)">
+    <div class="card-header">
+        <h1>Online Mobile Recharge</h1>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PriceNormalModal">See Price List</button>
+        <div id="ModalList">
+
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Ajax.BeginForm("NextPay", "OR", new AjaxOptions { HttpMethod = "Post" }, new { id = "FormOR" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <i class="fa fa-mobile" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Mobile Number</span></i>
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", id = "Phone", placeholder = "Phone number" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <i class="fa fa-inr" aria-hidden="true">&nbsp;<span style="font-family: Calibri">Amount</span></i>
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", id = "Amount", placeholder = "Amount (₹)" } })
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ml-5">
+                        <label>
+                            <input class="btn btn-primary mt-4" type="submit" id="btnOR" value="Recharge Now" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="formPay" style="display:none;">
+            <button type="button" id="btnBack" class="btn btn-outline-light"> Back</button>
+            <div class="row">
+                <div class="col-6">
+                    @Html.Partial("NextPay")
+                </div>
+                <div class="col-6 text-white">
+                    <div class=".payment-dialog-row text-black-50">
+                        <div class="card credit-card-box">
+                            <div class="card-header">
+                                <h3><span class="panel-title-text">Bill Info. </span></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Phone Number</label>
+                                    <input type="tel" class="form-control" id="billPhone" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Content</label>
+                                    <textarea class="form-control" readonly rows="3" wrap="soft" cols="4" id="billContent"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Total </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-rupee text-black-50"></i></span></div>
+                                        <input type="number" class="form-control w-25" id="billTotal" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $("#FormOR").submit(function () {
+                if ($("#FormOR").valid() == true) {
+                    $("#FormOR").hide("slow");
+                    $("#formPay").show("slow");
+                    $("#billPhone").val($("#Phone").val());
+                    $("#billContent").html("Online Recharge " + $("#Amount").val() + " (₹) for Phone number " + '"' + $("#Phone").val() + '"');
+                    $("#billTotal").val($("#Amount").val());
+                }
+            });
+            $("#btnBack").click(function () {
+                $("#FormOR").show("slow");
+                $("#formPay").hide("slow");
+            });
+            $("#ModalList").load("/OR/_PriceListORNormal");
+        </script>
+    </div>
+</div>

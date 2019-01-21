@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Data.Product>
+
+<!-- The Modal -->
+<div class="modal fade" id="PriceNormalModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Price List Online Recharge KMobile</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pMP)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pMR)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pDes)
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="font-weight-bold">
+                                    @Html.DisplayFor(modelItem => item.pMP)
+                                </td>
+                                <td class="font-weight-bold">
+                                    @Html.DisplayFor(modelItem => item.pMR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pDes)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
