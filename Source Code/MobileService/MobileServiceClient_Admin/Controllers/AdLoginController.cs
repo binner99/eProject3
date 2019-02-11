@@ -1,7 +1,6 @@
 ﻿using Data;
 using System.Net.Http;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace MobileServiceClient_Admin.Controllers
 {
@@ -9,10 +8,12 @@ namespace MobileServiceClient_Admin.Controllers
     {
         string url = "http://localhost:61560/check/Admin/";
         HttpClient client = new HttpClient();
-        // GET: AdLogin
-        //[Authorize]
+
         public ActionResult Index()
         {
+            Session["UserAdmin"] = "";
+            Session["ImageAdmin"] = "";
+            Session["RoleAdmin"] = false;
             return View();
         }
         [HttpPost]
@@ -23,12 +24,13 @@ namespace MobileServiceClient_Admin.Controllers
 
             if (status.IsSuccessStatusCode)
             {
-                FormsAuthentication.SetAuthCookie(admin.adName,false);
+                var model = status.Content.ReadAsAsync<Admin>().Result;
+                Session["UserAdmin"] = model.adName;
+                Session["RoleAdmin"] = model.adRole;
+                Session["ImageAdmin"] = model.adImage;
                 return RedirectToAction("Index", "Home");
             }
             return View("Index");
-
-
         }
     }
 }

@@ -147,6 +147,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\Admin\Kmobile.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\Logo\Kmobile.jpg" />
     <Content Include="img\Logo\Kmobile.png" />
@@ -242,7 +243,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\Address\" />
-    <Folder Include="img\Admin\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

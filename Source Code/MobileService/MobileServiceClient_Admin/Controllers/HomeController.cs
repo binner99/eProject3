@@ -8,17 +8,22 @@ namespace MobileServiceClient_Admin.Controllers
 {
     public class HomeController : Controller
     {
-        //public HomeController()
-        //{            
-        //}
-
         string url = "http://localhost:61560/api/Admin/";
         HttpClient client = new HttpClient();
-        //Index        
-        public ActionResult Index() => View(client.GetAsync(url).Result.Content.ReadAsAsync<IEnumerable<Admin>>().Result);
+
+        public bool TestLogin()
+        {
+            var test = Session["UserAdmin"];
+            if (string.IsNullOrEmpty(test.ToString()) || test == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        public ActionResult Index() => TestLogin() ? (ActionResult)View(client.GetAsync(url).Result.Content.ReadAsAsync<IEnumerable<Admin>>().Result) : RedirectToAction("Index", "AdLogin");
 
         //Details
-        public ActionResult Details(string adName) => View(client.GetAsync(url + adName).Result.Content.ReadAsAsync<Admin>().Result);
+        public ActionResult Details(string adName) => TestLogin() ? (ActionResult)View(client.GetAsync(url + adName).Result.Content.ReadAsAsync<Admin>().Result) : RedirectToAction("Index", "AdLogin");
 
         //Upload
         [HttpPost]

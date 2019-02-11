@@ -17,8 +17,9 @@ namespace MobileServiceClient.Controllers
         public ActionResult Home() => View(ViewBag.Current = "Home");
         // GET: Home
         public ActionResult Index()
-        {            
-            return View();
+        {
+            Session["UserLogin"] = "";
+            return View();            
         }
         //[HttpPost]
         public void InfoBill(OR oR)

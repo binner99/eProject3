@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Data;
+using Data.Vo;
 using RemoteAPI.Models;
 
 namespace RemoteAPI.Controllers
@@ -70,6 +71,22 @@ namespace RemoteAPI.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        [Route("check/Member")]
+        [ResponseType(typeof(Admin))]
+        public IHttpActionResult Login(Login login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var memCheck = db.Members.First(x => x.memPhone == login.memPhone && x.memPass == login.memPass);
+            if (memCheck == null)
+            {
+                return NotFound();
+            }
+            return Ok(memCheck);
         }
 
         // POST: api/Member

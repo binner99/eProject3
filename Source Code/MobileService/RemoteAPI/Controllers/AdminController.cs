@@ -31,7 +31,7 @@ namespace RemoteAPI.Controllers
         }
 
         [Route("check/Admin")]
-        [HttpPost]
+        [ResponseType(typeof(Admin))]
         public IHttpActionResult Login(Admin admin)
         {            
             if (!ModelState.IsValid)
@@ -43,7 +43,7 @@ namespace RemoteAPI.Controllers
             {
                 return NotFound();
             }            
-            return Ok();
+            return Ok(adCheck);
         }
 
         // POST: api/Admin
