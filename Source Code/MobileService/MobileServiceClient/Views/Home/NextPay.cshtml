@@ -32,7 +32,7 @@
         });
         document.getElementById('ExDate').addEventListener('input', function (e) {
             var target = e.target, position = target.selectionEnd, length = target.value.length;            
-            target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1/').trim();            
+            target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{2})/g, '$1/').substr(0,5).trim();
         });
     </script>
 }
