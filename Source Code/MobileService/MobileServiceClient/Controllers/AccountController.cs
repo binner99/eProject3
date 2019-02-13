@@ -30,7 +30,7 @@ namespace MobileServiceClient.Controllers
         [HttpPost]
         public ActionResult Login(Login login)
         {
-            var status = client.PostAsJsonAsync<Login>(url+ "/check/Member/", login).Result;
+            var status = client.PostAsJsonAsync<Login>(url + "/check/Member/", login).Result;
 
             if (status.IsSuccessStatusCode)
             {
@@ -56,7 +56,7 @@ namespace MobileServiceClient.Controllers
             };
             var status = client.PostAsJsonAsync<Member>(url + "/api/Member/", memNew).Result;
             if (status.IsSuccessStatusCode)
-            {                
+            {
                 return RedirectToAction("Login", "Account");
             }
             ModelState.AddModelError("", "Register Fails!");
@@ -66,13 +66,22 @@ namespace MobileServiceClient.Controllers
         {
             if (!TestLogin())
             {
-               return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account");
             }
             var memPhone = Session["UserLogin"].ToString();
             var model = client.GetAsync(url + "/api/Member/" + memPhone).Result.Content.ReadAsAsync<Member>().Result;
             return View(model);
         }
         public ActionResult Service() => TestLogin() == false ? RedirectToAction("Login", "Account") : (ActionResult)View();
-        public ActionResult History() => View();
+        public ActionResult History()
+        {
+            if (!TestLogin())
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var memPhone = Session["UserLogin"].ToString();
+            var model = client.GetAsync(url + "/api/Bill/" + memPhone).Result.Content.ReadAsAsync<Member>().Result;
+            return View(model);
+        }
     }
 }

@@ -20,14 +20,14 @@
             <div id="m-navbar-menu" class="w-100">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav d-flex flex-column w-100">
-                        <li class="nav-item">
-                            <a class="nav-link font-weight-bold" href="#"><i class="fa fa-edit"></i> Profile</a>
+                        <li class="nav-item active">
+                            <a class="nav-link font-weight-bold" href="@Url.Action("MyAccount","Account")"><i class="fa fa-edit"></i> Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" href="#"><i class="fa fa-cogs"></i> Service</a>
+                            <a class="nav-link font-weight-bold" href="@Url.Action("Service","Account")"><i class="fa fa-cogs"></i> Service</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link font-weight-bold" href="#"><i class="fa fa-history"></i> Transaction History</a>
+                            <a class="nav-link font-weight-bold" href="@Url.Action("History","Account")"><i class="fa fa-history"></i> Transaction History</a>
                         </li>
                     </ul>
                 </div>

@@ -82,19 +82,17 @@ namespace RemoteAPI.Controllers
         }
 
         // DELETE: api/Product/5
-        [ResponseType(typeof(Product))]
+        [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
-            Product product = db.Products.Find(id);
+            var product = db.Products.First(x=>x.pID==id);
             if (product == null)
             {
                 return NotFound();
             }
-
             db.Products.Remove(product);
             db.SaveChanges();
-
-            return Ok(product);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

@@ -14,12 +14,20 @@ namespace MobileServiceClient.Controllers
         {
             ViewBag.Current = "OR";
         }
-
-        public PartialViewResult _PriceListORNormal() => PartialView(client.GetAsync(url).Result.Content.ReadAsAsync<IEnumerable<Product>>().Result);
-        public PartialViewResult _PriceListORSpecial() => PartialView(client.GetAsync(url).Result.Content.ReadAsAsync<IEnumerable<Product>>().Result);
+        public bool TestLogin()
+        {
+            var test = Session["UserLogin"];
+            if (string.IsNullOrEmpty(test.ToString()) || test == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        public PartialViewResult _PriceListORNormal() => PartialView(client.GetAsync(url + "?pType=false").Result.Content.ReadAsAsync<IEnumerable<Product>>().Result);
+        public PartialViewResult _PriceListORSpecial() => PartialView(client.GetAsync(url + "?pType=true").Result.Content.ReadAsAsync<IEnumerable<Product>>().Result);
 
         public ActionResult ORNormal() => View();
-                       
+
         [HttpPost]
         public PartialViewResult NextPay(OR oR)
         {
@@ -27,6 +35,6 @@ namespace MobileServiceClient.Controllers
             TempData["billTotal"] = oR.Amount;
             return PartialView();
         }
-        public ActionResult ORSpecial() => View();
+        public ActionResult ORSpecial() => TestLogin() == false ? RedirectToAction("Login", "Account") : (ActionResult)View();
     }
 }

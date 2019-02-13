@@ -21,7 +21,6 @@
         <th>
             @Html.DisplayNameFor(model => model.billTotal)
         </th>
-        <th>Action</th>
     </tr>
 
     @foreach (var item in Model)
@@ -41,10 +40,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.billTotal)
-            </td>
-            <td>
-
-                @Html.ActionLink(" Details", "Details", new { id = item.billID }, new { @class = "btn btn-sm btn-info fa fa-info" })
             </td>
         </tr>
     }

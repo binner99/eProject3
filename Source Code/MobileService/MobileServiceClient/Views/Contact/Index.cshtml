@@ -1,4 +1,4 @@
-﻿
+﻿@model Data.Feedback
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,12 +9,14 @@
         <div class="container-fluid">
             <h1>Contact Information</h1>
             <hr>
-            <form action="javascript:void(0);" method="get" id="contactForm">
-                <input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control" type="hidden"
-                                                                                                                                                                                                                                  name="to" value="email@awebsite.com">
+            @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { id = "contactForm" }))
+            {
+                @Html.AntiForgeryToken()
                 <div class="form-row">
                     <div class="col-md-6">
-                        <div id="successfail"></div>
+                        <div id="successfail">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -25,34 +27,45 @@
                         <div class="form-group">
                             <label for="from-name">Name</label><span class="required-input">*</span>
                             <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" name="name" required="" placeholder="Full Name" id="from-name">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>
+                                @Html.EditorFor(model => model.fbCusname, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Full Name", id = "form-name" } })
                             </div>
+                            @Html.ValidationMessageFor(model => model.fbCusname, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="from-email">Email</label><span class="required-input">*</span>
                             <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" name="email" required="" placeholder="Email Address" id="from-email">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div>
+                                @Html.EditorFor(model => model.memEmail, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Email Address", id = "from-email" } })
                             </div>
+                            @Html.ValidationMessageFor(model => model.memEmail, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-row">
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                 <div class="form-group">
                                     <label for="from-phone">Phone</label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" required="" placeholder="Primary Phone" id="from-phone">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div>
+                                        @Html.EditorFor(model => model.memPhone, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Primary Phone", id = "from-phone" } })
                                     </div>
+                                    @Html.ValidationMessageFor(model => model.memPhone, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="from-calltime">Best Time to Call</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" name="call time" id="from-calltime"><optgroup label="Best Time to Call"><option value="Morning" selected="">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></optgroup></select>
+                                    <label>You are our Member?</label>
+                                    <div class="custom-control custom-checkbox mt-2">
+                                        @Html.EditorFor(model => model.fbObject, new { htmlAttributes = new { @class = "custom-control-input", id = "customCheckObject" } })
+                                        <label class="custom-control-label" for="customCheckObject">Check if you are Member</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group"><label for="from-comments">Comments</label><textarea class="form-control" rows="5" name="comments" placeholder="Enter Comments" id="from-comments"></textarea></div>
+                        <div class="form-group">
+                            <label for="from-comments">Comments</label>
+                            @Html.TextAreaFor(model => model.fbContent, new { @class = "form-control", rows = "5", placeholder = "Enter Comments", id = "from-comments" })
+                            @Html.ValidationMessageFor(model => model.fbContent, "", new { @class = "text-danger" })
+                        </div>
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
@@ -66,9 +79,7 @@
                         <div class="form-row">
                             <div class="col-12">
                                 <div class="static-map">
-                                    <iframe class="img-responsive img-thumbnail" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.6626580958668!2d106.66520265820785!3d10.786376998078707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgcGjGsOG7nW5nIDExLCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1520391560324" width="100%" height="150px" frameborder="0" style="border:0" allowfullscreen>
-
-                                    </iframe>
+                                    <iframe class="img-responsive img-thumbnail" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.6626580958668!2d106.66520265820785!3d10.786376998078707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgcGjGsOG7nW5nIDExLCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1520391560324" width="100%" height="150px" frameborder="0" style="border:0" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-12 col-lg-6">
@@ -89,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            }
         </div>
         <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
             <div class="modal-dialog modal-lg" role="document">
@@ -155,8 +166,8 @@
                                     <div class="form-row">
                                         <div class="col-12">
                                             <div class="static-map">
-                                                <iframe class="img-responsive img-thumbnail" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.6626580958668!2d106.66520265820785!3d10.786376998078707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgcGjGsOG7nW5nIDExLCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1520391560324" width="100%" height="150px" frameborder="0" style="border:0" allowfullscreen></iframe> 
-                                </div>
+                                                <iframe class="img-responsive img-thumbnail" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.6626580958668!2d106.66520265820785!3d10.786376998078707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed23c80767d%3A0x5a981a5efee9fd7d!2zNTkwIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgcGjGsOG7nW5nIDExLCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1520391560324" width="100%" height="150px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 col-md-12 col-lg-6">
                                             <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>

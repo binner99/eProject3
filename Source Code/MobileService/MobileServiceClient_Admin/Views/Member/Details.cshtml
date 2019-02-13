@@ -1,0 +1,37 @@
+﻿@model Data.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<p>
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark fa fa-arrow-left" })
+</p>
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.memPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.memName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.memEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memEmail)
+        </dd>
+    </dl>
+</div>

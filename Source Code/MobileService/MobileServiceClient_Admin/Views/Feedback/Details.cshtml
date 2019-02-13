@@ -1,0 +1,67 @@
+﻿@model Data.Feedback
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<p>
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark fa fa-arrow-left" })
+</p>
+@{ 
+    var obj = Model.fbObject ? "Member" : "Guest";
+    var status = Model.fbStatus ? "Replied" : "Didn't Reply yet";
+}
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fbCusname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fbCusname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.memPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.memEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fbObject)
+        </dt>
+
+        <dd>
+            @obj
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fbContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fbContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fbStatus)
+        </dt>
+
+        <dd>
+            @status
+        </dd>
+
+    </dl>
+</div>

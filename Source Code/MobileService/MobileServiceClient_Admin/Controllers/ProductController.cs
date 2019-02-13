@@ -1,9 +1,6 @@
 ﻿using Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MobileServiceClient_Admin.Controllers
@@ -54,15 +51,8 @@ namespace MobileServiceClient_Admin.Controllers
         //Delete
         public ActionResult Delete(int id)
         {
-            try
-            {
-                var status = client.DeleteAsync(url + id).Result;
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var status = client.DeleteAsync(url + id).Result;
+            return RedirectToAction("Index");
         }
     }
 }

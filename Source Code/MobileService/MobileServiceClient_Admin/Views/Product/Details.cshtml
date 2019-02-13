@@ -1,0 +1,59 @@
+﻿@model Data.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<p>
+    @Html.ActionLink(" Back to List", "Index", null, new { @class = "btn btn-outline-dark fa fa-arrow-left" })
+</p>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.pName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pDes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pDes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pMP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pMP)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pMR)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pMR)
+            </dd>
+
+        </dl>
+    </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pID })
+</p>
