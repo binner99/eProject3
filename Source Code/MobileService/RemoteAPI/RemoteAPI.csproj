@@ -176,10 +176,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901071619146_InitialCreate.cs" />
-    <Compile Include="Migrations\201901071619146_InitialCreate.Designer.cs">
-      <DependentUpon>201901071619146_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ConnectDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,11 +276,6 @@
       <Project>{f155a48b-9174-472b-9ce3-3c8902003cf9}</Project>
       <Name>Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901071619146_InitialCreate.resx">
-      <DependentUpon>201901071619146_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
